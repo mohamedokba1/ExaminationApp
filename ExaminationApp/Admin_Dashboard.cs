@@ -20,14 +20,27 @@ namespace ExaminationApp
 
         private void btn_mng_students_Click(object sender, EventArgs e)
         {
-            Student std_form= new Student();
+            StudentForm std_form= new StudentForm();
             std_form.ShowDialog();
+            this.Close();
         }
 
         private void btn_mng_departments_Click(object sender, EventArgs e)
         {
-            Department dept = new Department();
+            DepartmentForm dept = new DepartmentForm();
             dept.ShowDialog();
+        }
+
+        private void btn_mng_instructors_Click(object sender, EventArgs e)
+        {
+            InstructorForm instructor = new InstructorForm();
+            instructor.ShowDialog();
+        }
+
+        private void btn_mng_exam_Click(object sender, EventArgs e)
+        {
+            ExamForm exam=new ExamForm();
+            exam.ShowDialog();
         }
     }
 }

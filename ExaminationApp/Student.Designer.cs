@@ -1,6 +1,6 @@
 ﻿namespace ExaminationApp
 {
-    partial class Student
+    partial class StudentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,8 +32,6 @@
             this.btn_update_student = new System.Windows.Forms.Button();
             this.btn_delete_student = new System.Windows.Forms.Button();
             this.dgv_students = new System.Windows.Forms.DataGridView();
-            this.txt_std_id = new System.Windows.Forms.TextBox();
-            this.lbl_std_id = new System.Windows.Forms.Label();
             this.txt_std_fname = new System.Windows.Forms.TextBox();
             this.lbl_std_fname = new System.Windows.Forms.Label();
             this.txt_std_lname = new System.Windows.Forms.TextBox();
@@ -46,9 +44,9 @@
             this.txt_std_age = new System.Windows.Forms.TextBox();
             this.lbl_std_password = new System.Windows.Forms.Label();
             this.txt_std_password = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_depts = new System.Windows.Forms.ComboBox();
+            this.btn_back_home = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_students)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,12 +57,13 @@
             this.btn_add_student.FlatAppearance.BorderSize = 0;
             this.btn_add_student.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_add_student.ForeColor = System.Drawing.Color.White;
-            this.btn_add_student.Location = new System.Drawing.Point(113, 260);
+            this.btn_add_student.Location = new System.Drawing.Point(133, 260);
             this.btn_add_student.Name = "btn_add_student";
             this.btn_add_student.Size = new System.Drawing.Size(100, 46);
             this.btn_add_student.TabIndex = 0;
             this.btn_add_student.Text = "Add ";
             this.btn_add_student.UseVisualStyleBackColor = false;
+            this.btn_add_student.Click += new System.EventHandler(this.btn_add_student_Click);
             // 
             // btn_update_student
             // 
@@ -72,24 +71,26 @@
             this.btn_update_student.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
             this.btn_update_student.FlatAppearance.BorderSize = 0;
             this.btn_update_student.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_update_student.Location = new System.Drawing.Point(246, 260);
+            this.btn_update_student.Location = new System.Drawing.Point(295, 260);
             this.btn_update_student.Name = "btn_update_student";
             this.btn_update_student.Size = new System.Drawing.Size(100, 46);
             this.btn_update_student.TabIndex = 0;
             this.btn_update_student.Text = "Update";
             this.btn_update_student.UseVisualStyleBackColor = false;
+            this.btn_update_student.Click += new System.EventHandler(this.btn_update_student_Click);
             // 
             // btn_delete_student
             // 
             this.btn_delete_student.BackColor = System.Drawing.Color.Red;
             this.btn_delete_student.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_delete_student.ForeColor = System.Drawing.Color.White;
-            this.btn_delete_student.Location = new System.Drawing.Point(381, 260);
+            this.btn_delete_student.Location = new System.Drawing.Point(449, 260);
             this.btn_delete_student.Name = "btn_delete_student";
             this.btn_delete_student.Size = new System.Drawing.Size(100, 46);
             this.btn_delete_student.TabIndex = 0;
             this.btn_delete_student.Text = "Delete";
             this.btn_delete_student.UseVisualStyleBackColor = false;
+            this.btn_delete_student.Click += new System.EventHandler(this.btn_delete_student_Click);
             // 
             // dgv_students
             // 
@@ -100,28 +101,11 @@
             this.dgv_students.RowTemplate.Height = 29;
             this.dgv_students.Size = new System.Drawing.Size(776, 268);
             this.dgv_students.TabIndex = 1;
-            // 
-            // txt_std_id
-            // 
-            this.txt_std_id.Location = new System.Drawing.Point(97, 24);
-            this.txt_std_id.Name = "txt_std_id";
-            this.txt_std_id.Size = new System.Drawing.Size(267, 27);
-            this.txt_std_id.TabIndex = 3;
-            // 
-            // lbl_std_id
-            // 
-            this.lbl_std_id.AutoSize = true;
-            this.lbl_std_id.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_id.Location = new System.Drawing.Point(12, 27);
-            this.lbl_std_id.Name = "lbl_std_id";
-            this.lbl_std_id.Size = new System.Drawing.Size(25, 20);
-            this.lbl_std_id.TabIndex = 4;
-            this.lbl_std_id.Text = "ID";
-            this.lbl_std_id.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dgv_students.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_students_RowHeaderMouseDoubleClick);
             // 
             // txt_std_fname
             // 
-            this.txt_std_fname.Location = new System.Drawing.Point(97, 70);
+            this.txt_std_fname.Location = new System.Drawing.Point(104, 31);
             this.txt_std_fname.Name = "txt_std_fname";
             this.txt_std_fname.Size = new System.Drawing.Size(267, 27);
             this.txt_std_fname.TabIndex = 3;
@@ -130,7 +114,7 @@
             // 
             this.lbl_std_fname.AutoSize = true;
             this.lbl_std_fname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_fname.Location = new System.Drawing.Point(5, 73);
+            this.lbl_std_fname.Location = new System.Drawing.Point(12, 31);
             this.lbl_std_fname.Name = "lbl_std_fname";
             this.lbl_std_fname.Size = new System.Drawing.Size(86, 20);
             this.lbl_std_fname.TabIndex = 4;
@@ -138,7 +122,7 @@
             // 
             // txt_std_lname
             // 
-            this.txt_std_lname.Location = new System.Drawing.Point(97, 117);
+            this.txt_std_lname.Location = new System.Drawing.Point(104, 77);
             this.txt_std_lname.Name = "txt_std_lname";
             this.txt_std_lname.Size = new System.Drawing.Size(267, 27);
             this.txt_std_lname.TabIndex = 3;
@@ -147,7 +131,7 @@
             // 
             this.lbl_std_lname.AutoSize = true;
             this.lbl_std_lname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_lname.Location = new System.Drawing.Point(5, 120);
+            this.lbl_std_lname.Location = new System.Drawing.Point(12, 80);
             this.lbl_std_lname.Name = "lbl_std_lname";
             this.lbl_std_lname.Size = new System.Drawing.Size(84, 20);
             this.lbl_std_lname.TabIndex = 4;
@@ -158,7 +142,7 @@
             // 
             this.lbl_std_email.AutoSize = true;
             this.lbl_std_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_email.Location = new System.Drawing.Point(5, 176);
+            this.lbl_std_email.Location = new System.Drawing.Point(12, 176);
             this.lbl_std_email.Name = "lbl_std_email";
             this.lbl_std_email.Size = new System.Drawing.Size(47, 20);
             this.lbl_std_email.TabIndex = 8;
@@ -169,7 +153,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(395, 77);
+            this.label2.Location = new System.Drawing.Point(15, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 9;
@@ -179,7 +163,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(395, 31);
+            this.label3.Location = new System.Drawing.Point(404, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 20);
             this.label3.TabIndex = 10;
@@ -194,14 +178,14 @@
             // 
             // txt_std_address
             // 
-            this.txt_std_address.Location = new System.Drawing.Point(495, 73);
+            this.txt_std_address.Location = new System.Drawing.Point(104, 119);
             this.txt_std_address.Name = "txt_std_address";
-            this.txt_std_address.Size = new System.Drawing.Size(207, 27);
+            this.txt_std_address.Size = new System.Drawing.Size(267, 27);
             this.txt_std_address.TabIndex = 6;
             // 
             // txt_std_age
             // 
-            this.txt_std_age.Location = new System.Drawing.Point(495, 31);
+            this.txt_std_age.Location = new System.Drawing.Point(495, 58);
             this.txt_std_age.Name = "txt_std_age";
             this.txt_std_age.Size = new System.Drawing.Size(207, 27);
             this.txt_std_age.TabIndex = 7;
@@ -223,18 +207,6 @@
             this.txt_std_password.Size = new System.Drawing.Size(605, 27);
             this.txt_std_password.TabIndex = 11;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(505, 260);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 46);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Get Student Data";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -245,22 +217,36 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Department";
             // 
-            // comboBox1
+            // cb_depts
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(495, 116);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(207, 28);
-            this.comboBox1.TabIndex = 16;
+            this.cb_depts.FormattingEnabled = true;
+            this.cb_depts.Location = new System.Drawing.Point(495, 116);
+            this.cb_depts.Name = "cb_depts";
+            this.cb_depts.Size = new System.Drawing.Size(207, 28);
+            this.cb_depts.TabIndex = 16;
             // 
-            // Student
+            // btn_back_home
+            // 
+            this.btn_back_home.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn_back_home.FlatAppearance.BorderSize = 0;
+            this.btn_back_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_home.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_back_home.Location = new System.Drawing.Point(199, 605);
+            this.btn_back_home.Name = "btn_back_home";
+            this.btn_back_home.Size = new System.Drawing.Size(367, 47);
+            this.btn_back_home.TabIndex = 39;
+            this.btn_back_home.Text = "Back To Home";
+            this.btn_back_home.UseVisualStyleBackColor = false;
+            this.btn_back_home.Click += new System.EventHandler(this.btn_back_home_Click);
+            // 
+            // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 603);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(813, 664);
+            this.Controls.Add(this.btn_back_home);
+            this.Controls.Add(this.cb_depts);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_std_password);
             this.Controls.Add(this.txt_std_password);
             this.Controls.Add(this.lbl_std_email);
@@ -271,18 +257,17 @@
             this.Controls.Add(this.txt_std_age);
             this.Controls.Add(this.lbl_std_lname);
             this.Controls.Add(this.lbl_std_fname);
-            this.Controls.Add(this.lbl_std_id);
             this.Controls.Add(this.txt_std_lname);
             this.Controls.Add(this.txt_std_fname);
-            this.Controls.Add(this.txt_std_id);
             this.Controls.Add(this.dgv_students);
             this.Controls.Add(this.btn_delete_student);
             this.Controls.Add(this.btn_update_student);
             this.Controls.Add(this.btn_add_student);
             this.MaximizeBox = false;
-            this.Name = "Student";
+            this.Name = "StudentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student";
+            this.Load += new System.EventHandler(this.Student_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_students)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -295,8 +280,6 @@
         private Button btn_update_student;
         private Button btn_delete_student;
         private DataGridView dgv_students;
-        private TextBox txt_std_id;
-        private Label lbl_std_id;
         private TextBox txt_std_fname;
         private Label lbl_std_fname;
         private TextBox txt_std_lname;
@@ -309,8 +292,8 @@
         private TextBox txt_std_age;
         private Label lbl_std_password;
         private TextBox txt_std_password;
-        private Button button1;
         private Label label1;
-        private ComboBox comboBox1;
+        private ComboBox cb_depts;
+        private Button btn_back_home;
     }
 }

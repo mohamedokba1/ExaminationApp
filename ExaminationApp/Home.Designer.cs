@@ -90,7 +90,7 @@
             // btn_Instructor
             // 
             this.btn_Instructor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_Instructor.BackColor = System.Drawing.Color.Turquoise;
+            this.btn_Instructor.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btn_Instructor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Instructor.FlatAppearance.BorderSize = 0;
             this.btn_Instructor.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

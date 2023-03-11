@@ -41,7 +41,7 @@
             this.btn_mng_students.BackColor = System.Drawing.Color.Silver;
             this.btn_mng_students.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_mng_students.ForeColor = System.Drawing.Color.Black;
-            this.btn_mng_students.Location = new System.Drawing.Point(1, 271);
+            this.btn_mng_students.Location = new System.Drawing.Point(64, 325);
             this.btn_mng_students.Name = "btn_mng_students";
             this.btn_mng_students.Size = new System.Drawing.Size(287, 199);
             this.btn_mng_students.TabIndex = 0;
@@ -55,12 +55,13 @@
             this.btn_mng_instructors.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btn_mng_instructors.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_mng_instructors.ForeColor = System.Drawing.Color.White;
-            this.btn_mng_instructors.Location = new System.Drawing.Point(303, 271);
+            this.btn_mng_instructors.Location = new System.Drawing.Point(366, 325);
             this.btn_mng_instructors.Name = "btn_mng_instructors";
             this.btn_mng_instructors.Size = new System.Drawing.Size(287, 199);
             this.btn_mng_instructors.TabIndex = 0;
             this.btn_mng_instructors.Text = "Manage Instructors";
             this.btn_mng_instructors.UseVisualStyleBackColor = false;
+            this.btn_mng_instructors.Click += new System.EventHandler(this.btn_mng_instructors_Click);
             // 
             // btn_mng_departments
             // 
@@ -68,7 +69,7 @@
             this.btn_mng_departments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_mng_departments.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_mng_departments.ForeColor = System.Drawing.Color.White;
-            this.btn_mng_departments.Location = new System.Drawing.Point(609, 271);
+            this.btn_mng_departments.Location = new System.Drawing.Point(672, 325);
             this.btn_mng_departments.Name = "btn_mng_departments";
             this.btn_mng_departments.Size = new System.Drawing.Size(287, 199);
             this.btn_mng_departments.TabIndex = 0;
@@ -81,12 +82,13 @@
             this.btn_mng_exam.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_mng_exam.BackColor = System.Drawing.Color.Yellow;
             this.btn_mng_exam.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_exam.Location = new System.Drawing.Point(912, 271);
+            this.btn_mng_exam.Location = new System.Drawing.Point(975, 325);
             this.btn_mng_exam.Name = "btn_mng_exam";
             this.btn_mng_exam.Size = new System.Drawing.Size(287, 199);
             this.btn_mng_exam.TabIndex = 0;
             this.btn_mng_exam.Text = "Manage Exam";
             this.btn_mng_exam.UseVisualStyleBackColor = false;
+            this.btn_mng_exam.Click += new System.EventHandler(this.btn_mng_exam_Click);
             // 
             // lbl_admin_dashboard
             // 
@@ -96,10 +98,10 @@
             this.lbl_admin_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lbl_admin_dashboard.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_admin_dashboard.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_admin_dashboard.Location = new System.Drawing.Point(-9, -29);
+            this.lbl_admin_dashboard.Location = new System.Drawing.Point(-34, -15);
             this.lbl_admin_dashboard.Name = "lbl_admin_dashboard";
             this.lbl_admin_dashboard.Padding = new System.Windows.Forms.Padding(57, 67, 57, 67);
-            this.lbl_admin_dashboard.Size = new System.Drawing.Size(1375, 215);
+            this.lbl_admin_dashboard.Size = new System.Drawing.Size(1502, 215);
             this.lbl_admin_dashboard.TabIndex = 3;
             this.lbl_admin_dashboard.Text = "Admin Dashboard";
             this.lbl_admin_dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -108,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 482);
+            this.ClientSize = new System.Drawing.Size(1279, 591);
             this.Controls.Add(this.lbl_admin_dashboard);
             this.Controls.Add(this.btn_mng_exam);
             this.Controls.Add(this.btn_mng_departments);

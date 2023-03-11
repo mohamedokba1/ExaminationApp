@@ -17,7 +17,7 @@ namespace ExaminationApp
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want really to exit", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Do you want really to exit ?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Environment.Exit(0);
