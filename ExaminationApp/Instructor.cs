@@ -1,4 +1,5 @@
 ﻿using ExaminationApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace ExaminationApp
 {
     public partial class InstructorForm : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
+        ExaminationDbContext DB = new ExaminationDbContext();
         private int Id = 0;
         public InstructorForm()
         {
@@ -22,10 +23,14 @@ namespace ExaminationApp
 
         private void Instructor_Load(object sender, EventArgs e)
         {
-            var instructor=DB.Instructors.ToList();
+            var instructor = DB.Instructors.FromSql($"getAllInstructors").ToList();
             dgv_instructors.DataSource = instructor;
 
-            cb_depts.DataSource = DB.Departments.ToList();
+            dgv_instructors.Columns[0].Visible = false;
+            dgv_instructors.Columns[5].Visible = false;
+            dgv_instructors.Columns[6].Visible = false;
+
+            cb_depts.DataSource = DB.Departments.FromSql($"getAllDepartments").ToList();
             cb_depts.ValueMember = "DeptId";
             cb_depts.DisplayMember = "DeptName";
 
@@ -33,25 +38,35 @@ namespace ExaminationApp
             txt_ins_email.Text = "";
             txt_ins_password.Text = "";
             cb_depts.SelectedValue = "";
+
+            chk_ins_user.Checked= false;
         }
 
         private void btn_add_ins_Click(object sender, EventArgs e)
         {
-            var instructor = new Instructor();
-            instructor.InsName = txt_insName.Text;
-            instructor.InsEmail=txt_ins_email.Text;
-            instructor.InsPassword=txt_ins_password.Text;
-            instructor.DeptId = (int)cb_depts.SelectedValue;
+            var affectedRows = DB.Database.ExecuteSql($"addInstructor {txt_insName.Text},{txt_ins_email.Text}, {txt_ins_password.Text}, {(int)cb_depts.SelectedValue}");
+            if (affectedRows > 0)
+            {
+                if (chk_ins_user.Checked == true)
+                {
+                    DB.Database.ExecuteSql($"addUser {txt_ins_email.Text}, {txt_ins_password.Text}, {"instructor"}");
+                }
+                MessageBox.Show("Instructor Inserted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Instructor couldn't be Inserted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            DB.Instructors.Add(instructor);
-            DB.SaveChanges();
-            dgv_instructors.DataSource = DB.Instructors.ToList();
-            cb_depts.DataSource = DB.Departments.ToList();
+            }
+            dgv_instructors.DataSource = DB.Instructors.FromSql($"getAllInstructors").ToList();
+            cb_depts.DataSource = DB.Departments.FromSql($"getAllDepartments").ToList();
 
             txt_insName.Text = "";
             txt_ins_email.Text = "";
             txt_ins_password.Text = "";
             cb_depts.SelectedValue = "";
+            chk_ins_user.Checked = false;
 
         }
 
@@ -62,45 +77,67 @@ namespace ExaminationApp
             txt_ins_email.Text = dgv_instructors.SelectedRows[0].Cells[2].Value.ToString();
             txt_ins_password.Text = dgv_instructors.SelectedRows[0].Cells[3].Value.ToString();
             cb_depts.SelectedValue = (int)dgv_instructors.SelectedRows[0].Cells[4].Value;
+            var userEmail = DB.Users.Where(user => user.UserEmail == txt_ins_email.Text).FirstOrDefault();
+            if (userEmail != null)
+            {
+                chk_ins_user.Checked = true;
+            }
         }
 
         private void btn_update_ins_Click(object sender, EventArgs e)
         {
             Id = (int)dgv_instructors.SelectedRows[0].Cells[0].Value;
+            var affectedRows = DB.Database.ExecuteSql($"updateInstructor {Id},{txt_insName.Text},{txt_ins_email.Text}, {txt_ins_password.Text}, {(int)cb_depts.SelectedValue}");
+            if (affectedRows > 0)
+            {
+                if (chk_ins_user.Checked == true)
+                {
+                    DB.Database.ExecuteSql($"addUser {txt_ins_email.Text}, {txt_ins_password.Text}, {"instructor"}");
+                }
+                MessageBox.Show("Instructor Updated Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Instructor couldn't be Updated Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            var instructor = DB.Instructors.Where(i=>i.InsId == Id).FirstOrDefault();
-            instructor.InsName = txt_insName.Text;
-            instructor.InsEmail = txt_ins_email.Text;
-            instructor.InsPassword = txt_ins_password.Text;
-            instructor.DeptId = (int)cb_depts.SelectedValue;
-
-            DB.Instructors.Update(instructor);
-            DB.SaveChanges();
-            dgv_instructors.DataSource = DB.Instructors.ToList();
-
+            }
+            dgv_instructors.DataSource = DB.Instructors.FromSql($"getAllInstructors").ToList();
+            cb_depts.DataSource = DB.Departments.FromSql($"getAllDepartments").ToList();
             txt_insName.Text = "";
             txt_ins_email.Text = "";
             txt_ins_password.Text = "";
             cb_depts.SelectedValue = "";
+            chk_ins_user.Checked = false;
         }
 
         private void btn_delete_ins_Click(object sender, EventArgs e)
         {
-            var instructor = DB.Instructors.FirstOrDefault(i => i.InsId == Id);
-            DB.Remove(instructor);
-            DB.SaveChanges();
-            dgv_instructors.DataSource = DB.Instructors.ToList();
+            var affectedRows = DB.Database.ExecuteSql($"deleteInstructor {Id}");
+            int deletedrow = DB.Database.ExecuteSql($"deleteUser {txt_ins_email}");
+            if (affectedRows > 0 && deletedrow > 0)
+            {
+                MessageBox.Show("Instructor Deleted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Instructor couldn't be Deleted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            dgv_instructors.DataSource = DB.Instructors.FromSql($"getAllInstructors").ToList();
+            cb_depts.DataSource = DB.Departments.FromSql($"getAllDepartments").ToList();
 
             txt_insName.Text = "";
             txt_ins_email.Text = "";
             txt_ins_password.Text = "";
             cb_depts.SelectedValue = "";
+            chk_ins_user.Checked = false;
+
         }
 
-        private void btn_back_home_Click(object sender, EventArgs e)
+        private void icon_exit_Click(object sender, EventArgs e)
         {
-            Admin_Dashboard admin_form = new Admin_Dashboard();
-            admin_form.Show();
             this.Close();
         }
     }

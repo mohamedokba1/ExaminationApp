@@ -25,5 +25,5 @@ public partial class Student
 
     public virtual ICollection<StudAnswer> StudAnswers { get; } = new List<StudAnswer>();
 
-    public virtual ICollection<StudCourse> StudCourses { get; } = new List<StudCourse>();
+    public virtual ICollection<Course> Crs { get; } = new List<Course>();
 }

@@ -17,9 +17,13 @@ public partial class Question
 
     public int? CrsId { get; set; }
 
-    public virtual Course? Crs { get; set; }
+    public string? Choice1 { get; set; }
 
-    public virtual ICollection<QuesChoice> QuesChoices { get; } = new List<QuesChoice>();
+    public string? Choice2 { get; set; }
+
+    public string? Choice3 { get; set; }
+
+    public virtual Course? Crs { get; set; }
 
     public virtual ICollection<StudAnswer> StudAnswers { get; } = new List<StudAnswer>();
 

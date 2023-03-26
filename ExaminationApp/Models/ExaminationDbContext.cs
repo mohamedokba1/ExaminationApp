@@ -23,13 +23,9 @@ public partial class ExaminationDbContext : DbContext
 
     public virtual DbSet<Instructor> Instructors { get; set; }
 
-    public virtual DbSet<QuesChoice> QuesChoices { get; set; }
-
     public virtual DbSet<Question> Questions { get; set; }
 
     public virtual DbSet<StudAnswer> StudAnswers { get; set; }
-
-    public virtual DbSet<StudCourse> StudCourses { get; set; }
 
     public virtual DbSet<StudExam> StudExams { get; set; }
 
@@ -37,9 +33,11 @@ public partial class ExaminationDbContext : DbContext
 
     public virtual DbSet<Topic> Topics { get; set; }
 
+    public virtual DbSet<User> Users { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DINA;Database=ExaminationDB;Trusted_Connection=True;");
+        => optionsBuilder.UseSqlServer("Server=Dina;Database=ExaminationDB;Trusted_Connection=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -144,23 +142,6 @@ public partial class ExaminationDbContext : DbContext
                     });
         });
 
-        modelBuilder.Entity<QuesChoice>(entity =>
-        {
-            entity.HasKey(e => new { e.QuesId, e.Choice });
-
-            entity.ToTable("Ques_Choices");
-
-            entity.Property(e => e.QuesId).HasColumnName("Ques_Id");
-            entity.Property(e => e.Choice)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-
-            entity.HasOne(d => d.Ques).WithMany(p => p.QuesChoices)
-                .HasForeignKey(d => d.QuesId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Ques_Choices_Question");
-        });
-
         modelBuilder.Entity<Question>(entity =>
         {
             entity.HasKey(e => e.QuesId).HasName("PK__Question__A821235E0E89713E");
@@ -170,6 +151,15 @@ public partial class ExaminationDbContext : DbContext
             entity.Property(e => e.QuesId)
                 .ValueGeneratedNever()
                 .HasColumnName("Ques_Id");
+            entity.Property(e => e.Choice1)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Choice2)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Choice3)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.CorrectAnswer)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -238,26 +228,6 @@ public partial class ExaminationDbContext : DbContext
                 .HasConstraintName("FK_Stud_Answer_Student");
         });
 
-        modelBuilder.Entity<StudCourse>(entity =>
-        {
-            entity.HasKey(e => new { e.StId, e.CrsId });
-
-            entity.ToTable("Stud_Course");
-
-            entity.Property(e => e.StId).HasColumnName("St_Id");
-            entity.Property(e => e.CrsId).HasColumnName("Crs_Id");
-
-            entity.HasOne(d => d.Crs).WithMany(p => p.StudCourses)
-                .HasForeignKey(d => d.CrsId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Stud_Course_Course");
-
-            entity.HasOne(d => d.St).WithMany(p => p.StudCourses)
-                .HasForeignKey(d => d.StId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Stud_Course_Student");
-        });
-
         modelBuilder.Entity<StudExam>(entity =>
         {
             entity.HasKey(e => new { e.StId, e.ExamId });
@@ -311,6 +281,25 @@ public partial class ExaminationDbContext : DbContext
                 .HasForeignKey(d => d.DeptId)
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK");
+
+            entity.HasMany(d => d.Crs).WithMany(p => p.Sts)
+                .UsingEntity<Dictionary<string, object>>(
+                    "StudCourse",
+                    r => r.HasOne<Course>().WithMany()
+                        .HasForeignKey("CrsId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_Stud_Course_Course"),
+                    l => l.HasOne<Student>().WithMany()
+                        .HasForeignKey("StId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_Stud_Course_Student"),
+                    j =>
+                    {
+                        j.HasKey("StId", "CrsId");
+                        j.ToTable("Stud_Course");
+                        j.IndexerProperty<int>("StId").HasColumnName("St_Id");
+                        j.IndexerProperty<int>("CrsId").HasColumnName("Crs_Id");
+                    });
         });
 
         modelBuilder.Entity<Topic>(entity =>
@@ -326,6 +315,25 @@ public partial class ExaminationDbContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false)
                 .HasColumnName("topic_name");
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasKey(e => e.UserId).HasName("PK__Users__CB9A1CFF04F425B3");
+
+            entity.Property(e => e.UserId).HasColumnName("userId");
+            entity.Property(e => e.UserEmail)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("userEmail");
+            entity.Property(e => e.UserPassword)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("userPassword");
+            entity.Property(e => e.UserRole)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("userRole");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -17,9 +17,9 @@ public partial class Course
 
     public virtual ICollection<Question> Questions { get; } = new List<Question>();
 
-    public virtual ICollection<StudCourse> StudCourses { get; } = new List<StudCourse>();
-
     public virtual Topic? Topic { get; set; }
 
     public virtual ICollection<Instructor> Ins { get; } = new List<Instructor>();
+
+    public virtual ICollection<Student> Sts { get; } = new List<Student>();
 }

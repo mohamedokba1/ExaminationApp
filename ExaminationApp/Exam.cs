@@ -1,8 +1,10 @@
 ﻿using ExaminationApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,26 +15,18 @@ namespace ExaminationApp
 {
     public partial class ExamForm : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
+        ExaminationDbContext DB = new ExaminationDbContext();
         private int Id = 0;
         public ExamForm()
         {
             InitializeComponent();
         }
-
-        private void btn_back_home_Click(object sender, EventArgs e)
-        {
-            Admin_Dashboard admin_form = new Admin_Dashboard();
-            admin_form.Show();
-            this.Close();
-        }
-
         private void ExamForm_Load(object sender, EventArgs e)
         {
-            var exam=DB.Exams.ToList();
+            var exam = DB.Exams.FromSql($"getAllExams").ToList();
             dgv_Exam.DataSource = exam;
 
-            cbx_courses.DataSource = DB.Courses.ToList();
+            cbx_courses.DataSource = DB.Courses.FromSql($"getAllCourses").ToList();
             cbx_courses.ValueMember = "CrsId";
             cbx_courses.DisplayMember = "CrsName";
 
@@ -43,14 +37,20 @@ namespace ExaminationApp
 
         private void btn_add_dept_Click(object sender, EventArgs e)
         {
-            var exam = new Exam();
-            exam.PassScore=int.Parse(txt_pass_score.Text);
-            exam.ExamDuration=int.Parse(txt_duration.Text);
-            exam.CrsId =(int) cbx_courses.SelectedValue;
+            Id = DB.Exams.Max(e => e.ExamId);
+            var affectedRows = DB.Database.ExecuteSql($"addExam {Id + 100},{int.Parse(txt_pass_score.Text)},{int.Parse(txt_duration.Text)}, {(int)cbx_courses.SelectedValue}");
+            if (affectedRows > 0)
+            {
+                MessageBox.Show("Exam Inserted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Exam couldn't be Inserted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            DB.Exams.Add(exam); 
-            DB.SaveChanges();
-            dgv_Exam.DataSource = DB.Exams.ToList();
+            }
+
+            dgv_Exam.DataSource = DB.Exams.FromSql($"getAllExams").ToList();
 
             txt_duration.Text = "";
             txt_pass_score.Text = "";
@@ -68,15 +68,19 @@ namespace ExaminationApp
         private void btn_update_dept_Click(object sender, EventArgs e)
         {
             Id = (int)dgv_Exam.SelectedRows[0].Cells[0].Value;
-            var exam =DB.Exams.Where(e=>e.ExamId== Id).FirstOrDefault();
+            var affectedRows = DB.Database.ExecuteSql($"updateExam {Id},{int.Parse(txt_pass_score.Text)},{int.Parse(txt_duration.Text)}, {(int)cbx_courses.SelectedValue}");
+            if (affectedRows > 0)
+            {
+                MessageBox.Show("Exam Updated Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Exam couldn't be Updated Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            exam.PassScore = int.Parse(txt_pass_score.Text);
-            exam.ExamDuration = int.Parse(txt_duration.Text);
-            exam.CrsId = (int)cbx_courses.SelectedValue;
+            }
 
-            DB.Exams.Update(exam);
-            DB.SaveChanges();
-            dgv_Exam.DataSource = DB.Exams.ToList();
+            dgv_Exam.DataSource = DB.Exams.FromSql($"getAllExams").ToList();
 
             txt_duration.Text = "";
             txt_pass_score.Text = "";
@@ -85,14 +89,29 @@ namespace ExaminationApp
 
         private void btn_delete_dept_Click(object sender, EventArgs e)
         {
-            var exam = DB.Exams.FirstOrDefault(e => e.ExamId == Id);
-            DB.Exams.Remove(exam);
-            DB.SaveChanges();
-            dgv_Exam.DataSource = DB.Exams.ToList();
+            Id = (int)dgv_Exam.SelectedRows[0].Cells[0].Value;
+            var affectedRows = DB.Database.ExecuteSql($"deleteExam {Id}");
+            if (affectedRows > 0)
+            {
+                MessageBox.Show("Exam Deleted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Exam couldn't be Deleted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+            dgv_Exam.DataSource = DB.Exams.FromSql($"getAllExams").ToList();
 
             txt_duration.Text = "";
             txt_pass_score.Text = "";
             cbx_courses.SelectedValue = "";
+        }
+
+        private void icon_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

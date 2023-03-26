@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlClient;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExaminationApp
 {
@@ -23,7 +25,7 @@ namespace ExaminationApp
 
         private void DepartmentForm_Load(object sender, EventArgs e)
         {
-            var departments = DB.Departments.ToList();
+            var departments = DB.Departments.FromSql($"getAllDepartments").ToList();
             dgv_depts.DataSource = departments;
 
             txt_dept_name.Text = "";
@@ -31,14 +33,19 @@ namespace ExaminationApp
 
         private void btn_add_dept_Click(object sender, EventArgs e)
         {
-            var department = new Department();
             Id = DB.Departments.Max(x => x.DeptId);
-            department.DeptId = Id+1;
-            department.DeptName = txt_dept_name.Text;
+            var affectedRows = DB.Database.ExecuteSql($"addDepartment {Id + 1},{txt_dept_name.Text}");
+            if (affectedRows > 0)
+            {
+                MessageBox.Show("Department Inserted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Department couldn't be Inserted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            DB.Departments.Add(department);
-            DB.SaveChanges();
-            dgv_depts.DataSource = DB.Departments.ToList();
+            }
+            dgv_depts.DataSource = DB.Departments.FromSql($"getAllDepartments").ToList();
 
             txt_dept_name.Text = "";
         }
@@ -47,12 +54,18 @@ namespace ExaminationApp
         {
             var Id = (int)dgv_depts.SelectedRows[0].Cells[0].Value;
 
-            var department = DB.Departments.Where(d=>d.DeptId==Id).FirstOrDefault();
-            department.DeptName = txt_dept_name.Text;
+            var affectedRows = DB.Database.ExecuteSql($"updateDepartment {Id},{txt_dept_name.Text}");
+            if (affectedRows > 0)
+            {
+                MessageBox.Show("Department Updated Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Department couldn't be Updated Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            DB.Departments.Update(department);
-            DB.SaveChanges();
-            dgv_depts.DataSource = DB.Departments.ToList();
+            }
+            dgv_depts.DataSource = DB.Departments.FromSql($"getAllDepartments").ToList();
 
             txt_dept_name.Text = "";
 
@@ -60,24 +73,32 @@ namespace ExaminationApp
 
         private void dgv_depts_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Id=  (int)dgv_depts.SelectedRows[0].Cells[0].Value;
+            Id = (int)dgv_depts.SelectedRows[0].Cells[0].Value;
             txt_dept_name.Text = dgv_depts.SelectedRows[0].Cells[1].Value.ToString();
         }
 
         private void btn_delete_dept_Click(object sender, EventArgs e)
         {
-            var department = DB.Departments.FirstOrDefault(d => d.DeptId == Id);
-            DB.Remove(department);
-            DB.SaveChanges();
+            var Id = (int)dgv_depts.SelectedRows[0].Cells[0].Value;
+
+            var affectedRows = DB.Database.ExecuteSql($"deleteDepartment {Id}");
+            if (affectedRows > 0)
+            {
+                MessageBox.Show("Department Deleted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DB.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Department couldn't be Deleted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             dgv_depts.DataSource = DB.Departments.ToList();
             txt_dept_name.Text = "";
 
         }
 
-        private void btn_back_home_Click(object sender, EventArgs e)
+        private void icon_exit_Click(object sender, EventArgs e)
         {
-            Admin_Dashboard admin_form = new Admin_Dashboard();
-            admin_form.Show();
             this.Close();
         }
     }

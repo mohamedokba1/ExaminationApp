@@ -1,18 +1,17 @@
+using ExaminationApp.Models;
+
 namespace ExaminationApp
 {
     public partial class Home : Form
     {
+        ExaminationDbContext DB=new ExaminationDbContext();
         public Home()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
         }
 
-        private void showLoginform()
-        {
-            Login_Form log = new Login_Form();
-            log.ShowDialog();
-        }
+        
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -30,56 +29,42 @@ namespace ExaminationApp
             e.Cancel = true;
         }
 
-        private void btn_student_Click(object sender, EventArgs e)
+        private void btn_login_Click(object sender, EventArgs e)
         {
-            showLoginform();
+            string userEmail = txt_user_email.Text;
+            string userPassword = txt_user_password.Text;
+            var user = DB.Users.Where(user => user.UserEmail == userEmail && user.UserPassword == userPassword).FirstOrDefault();
+            if (user != null)
+            {
+                if (user.UserRole.ToLower() == "admin")
+                {
+                    this.Hide();
+                    Admin_Dashboard admin = new Admin_Dashboard(this);
+                    admin.ShowDialog();
+                }
+                else if (user.UserRole.ToLower() == "student")
+                {
+                    this.Hide();
+                    Student_Screen stdScreen = new Student_Screen(this, user.UserEmail);
+                    stdScreen.ShowDialog();
+                }
+                else if (user.UserRole.ToLower() == "instructor")
+                {
+                    this.Hide();
+                    Instructor_Dashboard instructorScreen = new Instructor_Dashboard(this,user.UserEmail);
+                    instructorScreen.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong Email or password", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void btn_Instructor_Click(object sender, EventArgs e)
+        private void Home_Load(object sender, EventArgs e)
         {
-            showLoginform();
+            txt_user_email.Text = "";
+            txt_user_password.Text = "";
         }
-        private void btn_admin_Click(object sender, EventArgs e)
-        {
-            showLoginform();
-        }
-
-        private void btn_student_MouseEnter(object sender, EventArgs e)
-        {
-            btn_student.BackColor = Color.White;
-            btn_student.ForeColor = Color.DeepSkyBlue;
-        }
-
-        private void btn_student_MouseLeave(object sender, EventArgs e)
-        {
-            btn_student.BackColor = Color.DeepSkyBlue;
-            btn_student.ForeColor = Color.White;
-        }
-
-        private void btn_admin_MouseEnter(object sender, EventArgs e)
-        {
-            btn_admin.BackColor = Color.White;
-            btn_admin.ForeColor = Color.Tomato;
-        }
-
-        private void btn_admin_MouseLeave(object sender, EventArgs e)
-        {
-            btn_admin.BackColor = Color.Tomato;
-            btn_admin.ForeColor = Color.White;
-        }
-
-        private void btn_Instructor_MouseEnter(object sender, EventArgs e)
-        {
-            btn_Instructor.BackColor = Color.White;
-            btn_Instructor.ForeColor = Color.Turquoise;
-        }
-
-        private void btn_Instructor_MouseLeave(object sender, EventArgs e)
-        {
-            btn_Instructor.BackColor = Color.Turquoise;
-            btn_Instructor.ForeColor = Color.White;
-        }
-
-        
     }
 }
