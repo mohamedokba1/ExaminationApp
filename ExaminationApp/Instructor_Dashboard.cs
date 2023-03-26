@@ -48,5 +48,12 @@ namespace ExaminationApp
         {
             lbl_welcome_ins.Text = $"Welcome, {insName}";
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            StudExamForm correct = new StudExamForm(this);
+            correct.ShowDialog();
+        }
     }
 }

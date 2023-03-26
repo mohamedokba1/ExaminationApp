@@ -18,10 +18,11 @@ namespace ExaminationApp
         ExaminationDbContext DB = new ExaminationDbContext();
         private int StdId = 0;
         private int ExamId = 0;
-
-        public StudExamForm()
+        private Instructor_Dashboard insPage;
+        public StudExamForm(Instructor_Dashboard insPage)
         {
             InitializeComponent();
+            this.insPage=insPage;
         }
 
         private void btn_back_home_Click(object sender, EventArgs e)
@@ -44,9 +45,13 @@ namespace ExaminationApp
             cb_stds.ValueMember = "StdId";
             cb_stds.DisplayMember = "StdFname";
 
-            txt_exam_date.Text = "";
-            txt_status.Text = "";
+            cb_status.SelectedText = "-- Select Correct Answer --";
+            cb_status.Items.Add("Passed");
+            cb_status.Items.Add("Failed");
+
+            dtp_date.Text = "";
             txt_st_score.Text = "";
+            cb_status.SelectedValue = "";
             cb_exams.SelectedValue = "";
             cb_stds.SelectedValue = "";
         }
@@ -56,7 +61,7 @@ namespace ExaminationApp
             StdId = (int)cb_stds.SelectedValue;
             ExamId = (int)cb_exams.SelectedValue;
 
-            var affectedRows = DB.Database.ExecuteSql($"addStudExam {StdId},{ExamId},{int.Parse(txt_st_score.Text)},{DateTime.Parse(txt_exam_date.Text)},{txt_status.Text}");
+            var affectedRows = DB.Database.ExecuteSql($"addStudExam {StdId},{ExamId},{int.Parse(txt_st_score.Text)},{DateTime.Parse(dtp_date.Text)},{cb_status.Text}");
             if (affectedRows > 0)
             {
                 MessageBox.Show("Student Exam Inserted Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,9 +74,9 @@ namespace ExaminationApp
             }
             dgv_StdExam.DataSource = DB.StudExams.FromSql($"getAllStudExam").ToList();
 
-            txt_exam_date.Text = "";
-            txt_status.Text = "";
+            dtp_date.Text = "";
             txt_st_score.Text = "";
+            cb_status.SelectedValue = "";
             cb_exams.SelectedValue = "";
             cb_stds.SelectedValue = "";
         }
@@ -81,15 +86,15 @@ namespace ExaminationApp
             StdId = (int)dgv_StdExam.SelectedRows[0].Cells[0].Value;
             ExamId = (int)dgv_StdExam.SelectedRows[0].Cells[1].Value;
             txt_st_score.Text = dgv_StdExam.SelectedRows[0].Cells[2].Value.ToString();
-            txt_exam_date.Text = dgv_StdExam.SelectedRows[0].Cells[3].Value.ToString();
-            txt_status.Text = dgv_StdExam.SelectedRows[0].Cells[4].Value.ToString();
+            dtp_date.Text = dgv_StdExam.SelectedRows[0].Cells[3].Value.ToString();
+            cb_status.SelectedValue = dgv_StdExam.SelectedRows[0].Cells[4].Value.ToString();
         }
 
         private void btn_update_dept_Click(object sender, EventArgs e)
         {
             StdId = (int)dgv_StdExam.SelectedRows[0].Cells[0].Value;
             ExamId = (int)dgv_StdExam.SelectedRows[0].Cells[1].Value;
-            var affectedRows = DB.Database.ExecuteSql($"updateStudExam {StdId},{ExamId},{int.Parse(txt_st_score.Text)},{DateTime.Parse(txt_exam_date.Text)},{txt_status.Text}");
+            var affectedRows = DB.Database.ExecuteSql($"updateStudExam {StdId},{ExamId},{int.Parse(txt_st_score.Text)},{DateTime.Parse(dtp_date.Text)},{cb_status.Text}");
             if (affectedRows > 0)
             {
                 MessageBox.Show("Student Exam Updated Successfully", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -102,9 +107,9 @@ namespace ExaminationApp
             }
             dgv_StdExam.DataSource = DB.StudExams.FromSql($"getAllStudExam").ToList();
 
-            txt_exam_date.Text = "";
-            txt_status.Text = "";
+            dtp_date.Text = "";
             txt_st_score.Text = "";
+            cb_status.SelectedValue = "";
             cb_exams.SelectedValue = "";
             cb_stds.SelectedValue = "";
         }
@@ -126,9 +131,9 @@ namespace ExaminationApp
             }
             dgv_StdExam.DataSource = DB.StudExams.ToList();
 
-            txt_exam_date.Text = "";
-            txt_status.Text = "";
+            dtp_date.Text = "";
             txt_st_score.Text = "";
+            cb_status.SelectedValue = "";
             cb_exams.SelectedValue = "";
             cb_stds.SelectedValue = "";
         }

@@ -32,6 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btn_add_question = new System.Windows.Forms.Button();
             this.lbl_welcome_ins = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // icon_close
@@ -57,9 +58,9 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(72, 337);
+            this.button1.Location = new System.Drawing.Point(72, 275);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(275, 146);
+            this.button1.Size = new System.Drawing.Size(275, 103);
             this.button1.TabIndex = 2;
             this.button1.Text = "Manage Exam";
             this.button1.UseVisualStyleBackColor = false;
@@ -72,9 +73,9 @@
             this.btn_add_question.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add_question.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_add_question.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_add_question.Location = new System.Drawing.Point(72, 161);
+            this.btn_add_question.Location = new System.Drawing.Point(72, 126);
             this.btn_add_question.Name = "btn_add_question";
-            this.btn_add_question.Size = new System.Drawing.Size(275, 140);
+            this.btn_add_question.Size = new System.Drawing.Size(275, 108);
             this.btn_add_question.TabIndex = 3;
             this.btn_add_question.Text = "Manage Question";
             this.btn_add_question.UseVisualStyleBackColor = false;
@@ -89,11 +90,27 @@
             this.lbl_welcome_ins.Size = new System.Drawing.Size(0, 20);
             this.lbl_welcome_ins.TabIndex = 9;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.SlateBlue;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(72, 426);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(275, 103);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Manage Exam";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Instructor_Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 527);
+            this.ClientSize = new System.Drawing.Size(445, 610);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.lbl_welcome_ins);
             this.Controls.Add(this.icon_close);
             this.Controls.Add(this.button1);
@@ -113,5 +130,6 @@
         private Button button1;
         private Button btn_add_question;
         private Label lbl_welcome_ins;
+        private Button button2;
     }
 }
