@@ -11,11 +11,13 @@ public partial class Exam
 
     public int? ExamDuration { get; set; }
 
-    public int? CrsId { get; set; }
+    public int CrsId { get; set; }
 
-    public virtual Course? Crs { get; set; }
+    public virtual Course Crs { get; set; } = null!;
 
-    public virtual ICollection<StudAnswer> StudAnswers { get; } = new List<StudAnswer>();
+    public virtual ICollection<StdAnswer> StdAnswers { get; } = new List<StdAnswer>();
 
-    public virtual ICollection<Question> Ques { get; } = new List<Question>();
+    public virtual ICollection<StudExam> StudExams { get; } = new List<StudExam>();
+
+    public virtual ICollection<Question> Quests { get; } = new List<Question>();
 }

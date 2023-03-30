@@ -1,16 +1,5 @@
 ﻿using ExaminationApp.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ExaminationApp
 {
@@ -18,9 +7,11 @@ namespace ExaminationApp
     {
         ExaminationDbContext DB = new ExaminationDbContext();
         private int Id = 0;
-        public TopicForm()
+        private Admin_Dashboard adminPage;
+        public TopicForm(Admin_Dashboard adminPage)
         {
             InitializeComponent();
+            this.adminPage = adminPage;
         }
 
         private void TopicForm_Load(object sender, EventArgs e)
@@ -92,16 +83,14 @@ namespace ExaminationApp
                 MessageBox.Show("Topic couldn't be Deleted Unfortunatly", "OK", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
             dgv_topics.DataSource = DB.Topics.ToList();
-
             txt_top_name.Text = "";
-
         }
 
         private void icon_exit_Click(object sender, EventArgs e)
         {
-            this.Close ();
+            this.Close();
+            adminPage.Show();
         }
     }
 }

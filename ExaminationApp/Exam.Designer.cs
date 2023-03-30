@@ -28,161 +28,167 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_dept_id = new System.Windows.Forms.Label();
-            this.cbx_courses = new System.Windows.Forms.ComboBox();
-            this.txt_duration = new System.Windows.Forms.TextBox();
-            this.txt_pass_score = new System.Windows.Forms.TextBox();
-            this.btn_delete_dept = new System.Windows.Forms.Button();
-            this.btn_update_dept = new System.Windows.Forms.Button();
-            this.btn_add_dept = new System.Windows.Forms.Button();
-            this.dgv_Exam = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.icon_exit = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Exam)).BeginInit();
-            this.SuspendLayout();
+            label1 = new Label();
+            lbl_dept_id = new Label();
+            cbx_courses = new ComboBox();
+            txt_duration = new TextBox();
+            txt_pass_score = new TextBox();
+            btn_delete_dept = new Button();
+            btn_update_dept = new Button();
+            btn_add_dept = new Button();
+            dgv_Exam = new DataGridView();
+            label2 = new Label();
+            icon_exit = new FontAwesome.Sharp.IconButton();
+            ((System.ComponentModel.ISupportInitialize)dgv_Exam).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(313, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 28);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Duration";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(313, 59);
+            label1.Name = "label1";
+            label1.Size = new Size(96, 28);
+            label1.TabIndex = 14;
+            label1.Text = "Duration";
             // 
             // lbl_dept_id
             // 
-            this.lbl_dept_id.AutoSize = true;
-            this.lbl_dept_id.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_dept_id.Location = new System.Drawing.Point(44, 60);
-            this.lbl_dept_id.Name = "lbl_dept_id";
-            this.lbl_dept_id.Size = new System.Drawing.Size(111, 28);
-            this.lbl_dept_id.TabIndex = 13;
-            this.lbl_dept_id.Text = "Pass Score";
+            lbl_dept_id.AutoSize = true;
+            lbl_dept_id.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_dept_id.Location = new Point(44, 60);
+            lbl_dept_id.Name = "lbl_dept_id";
+            lbl_dept_id.Size = new Size(111, 28);
+            lbl_dept_id.TabIndex = 13;
+            lbl_dept_id.Text = "Pass Score";
             // 
             // cbx_courses
             // 
-            this.cbx_courses.FormattingEnabled = true;
-            this.cbx_courses.Location = new System.Drawing.Point(228, 112);
-            this.cbx_courses.Name = "cbx_courses";
-            this.cbx_courses.Size = new System.Drawing.Size(264, 28);
-            this.cbx_courses.TabIndex = 12;
+            cbx_courses.FormattingEnabled = true;
+            cbx_courses.Location = new Point(228, 112);
+            cbx_courses.Name = "cbx_courses";
+            cbx_courses.Size = new Size(264, 28);
+            cbx_courses.TabIndex = 12;
             // 
             // txt_duration
             // 
-            this.txt_duration.Location = new System.Drawing.Point(416, 60);
-            this.txt_duration.Name = "txt_duration";
-            this.txt_duration.Size = new System.Drawing.Size(147, 27);
-            this.txt_duration.TabIndex = 10;
+            txt_duration.Location = new Point(416, 60);
+            txt_duration.Name = "txt_duration";
+            txt_duration.Size = new Size(147, 27);
+            txt_duration.TabIndex = 10;
             // 
             // txt_pass_score
             // 
-            this.txt_pass_score.Location = new System.Drawing.Point(163, 59);
-            this.txt_pass_score.Name = "txt_pass_score";
-            this.txt_pass_score.Size = new System.Drawing.Size(125, 27);
-            this.txt_pass_score.TabIndex = 11;
+            txt_pass_score.Location = new Point(163, 59);
+            txt_pass_score.Name = "txt_pass_score";
+            txt_pass_score.Size = new Size(125, 27);
+            txt_pass_score.TabIndex = 11;
             // 
             // btn_delete_dept
             // 
-            this.btn_delete_dept.BackColor = System.Drawing.Color.Red;
-            this.btn_delete_dept.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_delete_dept.ForeColor = System.Drawing.Color.White;
-            this.btn_delete_dept.Location = new System.Drawing.Point(400, 178);
-            this.btn_delete_dept.Name = "btn_delete_dept";
-            this.btn_delete_dept.Size = new System.Drawing.Size(106, 48);
-            this.btn_delete_dept.TabIndex = 7;
-            this.btn_delete_dept.Text = "Delete";
-            this.btn_delete_dept.UseVisualStyleBackColor = false;
-            this.btn_delete_dept.Click += new System.EventHandler(this.btn_delete_dept_Click);
+            btn_delete_dept.BackColor = Color.Red;
+            btn_delete_dept.FlatAppearance.BorderSize = 0;
+            btn_delete_dept.FlatStyle = FlatStyle.Flat;
+            btn_delete_dept.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_delete_dept.ForeColor = Color.White;
+            btn_delete_dept.Location = new Point(400, 178);
+            btn_delete_dept.Name = "btn_delete_dept";
+            btn_delete_dept.Size = new Size(106, 48);
+            btn_delete_dept.TabIndex = 7;
+            btn_delete_dept.Text = "Delete";
+            btn_delete_dept.UseVisualStyleBackColor = false;
+            btn_delete_dept.Click += btn_delete_dept_Click;
             // 
             // btn_update_dept
             // 
-            this.btn_update_dept.BackColor = System.Drawing.Color.Gold;
-            this.btn_update_dept.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_update_dept.Location = new System.Drawing.Point(268, 178);
-            this.btn_update_dept.Name = "btn_update_dept";
-            this.btn_update_dept.Size = new System.Drawing.Size(106, 48);
-            this.btn_update_dept.TabIndex = 8;
-            this.btn_update_dept.Text = "Update";
-            this.btn_update_dept.UseVisualStyleBackColor = false;
-            this.btn_update_dept.Click += new System.EventHandler(this.btn_update_dept_Click);
+            btn_update_dept.BackColor = Color.Gold;
+            btn_update_dept.FlatAppearance.BorderSize = 0;
+            btn_update_dept.FlatStyle = FlatStyle.Flat;
+            btn_update_dept.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_update_dept.Location = new Point(268, 178);
+            btn_update_dept.Name = "btn_update_dept";
+            btn_update_dept.Size = new Size(106, 48);
+            btn_update_dept.TabIndex = 8;
+            btn_update_dept.Text = "Update";
+            btn_update_dept.UseVisualStyleBackColor = false;
+            btn_update_dept.Click += btn_update_dept_Click;
             // 
             // btn_add_dept
             // 
-            this.btn_add_dept.BackColor = System.Drawing.Color.YellowGreen;
-            this.btn_add_dept.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_add_dept.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_add_dept.Location = new System.Drawing.Point(137, 178);
-            this.btn_add_dept.Name = "btn_add_dept";
-            this.btn_add_dept.Size = new System.Drawing.Size(106, 48);
-            this.btn_add_dept.TabIndex = 9;
-            this.btn_add_dept.Text = "Add";
-            this.btn_add_dept.UseVisualStyleBackColor = false;
-            this.btn_add_dept.Click += new System.EventHandler(this.btn_add_dept_Click);
+            btn_add_dept.BackColor = Color.YellowGreen;
+            btn_add_dept.FlatAppearance.BorderSize = 0;
+            btn_add_dept.FlatStyle = FlatStyle.Flat;
+            btn_add_dept.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_add_dept.ForeColor = SystemColors.ButtonHighlight;
+            btn_add_dept.Location = new Point(137, 178);
+            btn_add_dept.Name = "btn_add_dept";
+            btn_add_dept.Size = new Size(106, 48);
+            btn_add_dept.TabIndex = 9;
+            btn_add_dept.Text = "Add";
+            btn_add_dept.UseVisualStyleBackColor = false;
+            btn_add_dept.Click += btn_add_dept_Click;
             // 
             // dgv_Exam
             // 
-            this.dgv_Exam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Exam.Location = new System.Drawing.Point(44, 269);
-            this.dgv_Exam.Name = "dgv_Exam";
-            this.dgv_Exam.RowHeadersWidth = 51;
-            this.dgv_Exam.RowTemplate.Height = 29;
-            this.dgv_Exam.Size = new System.Drawing.Size(543, 228);
-            this.dgv_Exam.TabIndex = 6;
-            this.dgv_Exam.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_Exam_RowHeaderMouseDoubleClick);
+            dgv_Exam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_Exam.Location = new Point(44, 269);
+            dgv_Exam.Name = "dgv_Exam";
+            dgv_Exam.RowHeadersWidth = 51;
+            dgv_Exam.RowTemplate.Height = 29;
+            dgv_Exam.Size = new Size(543, 228);
+            dgv_Exam.TabIndex = 6;
+            dgv_Exam.RowHeaderMouseDoubleClick += dgv_Exam_RowHeaderMouseDoubleClick;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(137, 112);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 28);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Course";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(137, 112);
+            label2.Name = "label2";
+            label2.Size = new Size(76, 28);
+            label2.TabIndex = 15;
+            label2.Text = "Course";
             // 
             // icon_exit
             // 
-            this.icon_exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.icon_exit.FlatAppearance.BorderSize = 0;
-            this.icon_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.icon_exit.IconColor = System.Drawing.Color.Red;
-            this.icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.icon_exit.IconSize = 35;
-            this.icon_exit.Location = new System.Drawing.Point(581, 3);
-            this.icon_exit.Name = "icon_exit";
-            this.icon_exit.Size = new System.Drawing.Size(47, 41);
-            this.icon_exit.TabIndex = 17;
-            this.icon_exit.UseVisualStyleBackColor = true;
-            this.icon_exit.Click += new System.EventHandler(this.icon_exit_Click);
+            icon_exit.Cursor = Cursors.Hand;
+            icon_exit.FlatAppearance.BorderSize = 0;
+            icon_exit.FlatStyle = FlatStyle.Flat;
+            icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            icon_exit.IconColor = Color.Red;
+            icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            icon_exit.IconSize = 35;
+            icon_exit.Location = new Point(581, 3);
+            icon_exit.Name = "icon_exit";
+            icon_exit.Size = new Size(47, 41);
+            icon_exit.TabIndex = 17;
+            icon_exit.UseVisualStyleBackColor = true;
+            icon_exit.Click += icon_exit_Click;
             // 
             // ExamForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 520);
-            this.Controls.Add(this.icon_exit);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_dept_id);
-            this.Controls.Add(this.cbx_courses);
-            this.Controls.Add(this.txt_duration);
-            this.Controls.Add(this.txt_pass_score);
-            this.Controls.Add(this.btn_delete_dept);
-            this.Controls.Add(this.btn_update_dept);
-            this.Controls.Add(this.btn_add_dept);
-            this.Controls.Add(this.dgv_Exam);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ExamForm";
-            this.Text = "Exam";
-            this.Load += new System.EventHandler(this.ExamForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Exam)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(640, 520);
+            Controls.Add(icon_exit);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(lbl_dept_id);
+            Controls.Add(cbx_courses);
+            Controls.Add(txt_duration);
+            Controls.Add(txt_pass_score);
+            Controls.Add(btn_delete_dept);
+            Controls.Add(btn_update_dept);
+            Controls.Add(btn_add_dept);
+            Controls.Add(dgv_Exam);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "ExamForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Exam";
+            Load += ExamForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgv_Exam).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

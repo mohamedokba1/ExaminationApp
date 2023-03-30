@@ -18,9 +18,11 @@ namespace ExaminationApp
     {
         ExaminationDbContext DB = new ExaminationDbContext();
         private int Id = 0;
-        public StudentForm()
+        private Admin_Dashboard adminPage;
+        public StudentForm(Admin_Dashboard adminPage)
         {
             InitializeComponent();
+            this.adminPage = adminPage;
         }
 
 
@@ -150,10 +152,10 @@ namespace ExaminationApp
             chk_std_user.Checked = false;
 
         }
-
         private void icon_exit_Click(object sender, EventArgs e)
         {
             this.Close();
+            adminPage.Show();
         }
     }
 }

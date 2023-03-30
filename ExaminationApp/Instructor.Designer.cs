@@ -28,204 +28,204 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv_instructors = new System.Windows.Forms.DataGridView();
-            this.btn_delete_ins = new System.Windows.Forms.Button();
-            this.btn_update_ins = new System.Windows.Forms.Button();
-            this.btn_add_ins = new System.Windows.Forms.Button();
-            this.cb_depts = new System.Windows.Forms.ComboBox();
-            this.lbl_std_lname = new System.Windows.Forms.Label();
-            this.txt_insName = new System.Windows.Forms.TextBox();
-            this.txt_ins_email = new System.Windows.Forms.TextBox();
-            this.lbl_std_email = new System.Windows.Forms.Label();
-            this.txt_ins_password = new System.Windows.Forms.TextBox();
-            this.lbl_std_password = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.icon_exit = new FontAwesome.Sharp.IconButton();
-            this.chk_ins_user = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_instructors)).BeginInit();
-            this.SuspendLayout();
+            dgv_instructors = new DataGridView();
+            btn_delete_ins = new Button();
+            btn_update_ins = new Button();
+            btn_add_ins = new Button();
+            cb_depts = new ComboBox();
+            lbl_std_lname = new Label();
+            txt_insName = new TextBox();
+            txt_ins_email = new TextBox();
+            lbl_std_email = new Label();
+            txt_ins_password = new TextBox();
+            lbl_std_password = new Label();
+            label1 = new Label();
+            icon_exit = new FontAwesome.Sharp.IconButton();
+            chk_ins_user = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)dgv_instructors).BeginInit();
+            SuspendLayout();
             // 
             // dgv_instructors
             // 
-            this.dgv_instructors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_instructors.Location = new System.Drawing.Point(28, 302);
-            this.dgv_instructors.Name = "dgv_instructors";
-            this.dgv_instructors.RowHeadersWidth = 51;
-            this.dgv_instructors.RowTemplate.Height = 29;
-            this.dgv_instructors.Size = new System.Drawing.Size(704, 271);
-            this.dgv_instructors.TabIndex = 20;
-            this.dgv_instructors.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_instructors_RowHeaderMouseDoubleClick);
+            dgv_instructors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_instructors.Location = new Point(28, 302);
+            dgv_instructors.Name = "dgv_instructors";
+            dgv_instructors.RowHeadersWidth = 51;
+            dgv_instructors.RowTemplate.Height = 29;
+            dgv_instructors.Size = new Size(704, 271);
+            dgv_instructors.TabIndex = 20;
+            dgv_instructors.RowHeaderMouseDoubleClick += dgv_instructors_RowHeaderMouseDoubleClick;
             // 
             // btn_delete_ins
             // 
-            this.btn_delete_ins.BackColor = System.Drawing.Color.Red;
-            this.btn_delete_ins.FlatAppearance.BorderSize = 0;
-            this.btn_delete_ins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_ins.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_delete_ins.ForeColor = System.Drawing.Color.White;
-            this.btn_delete_ins.Location = new System.Drawing.Point(563, 236);
-            this.btn_delete_ins.Name = "btn_delete_ins";
-            this.btn_delete_ins.Size = new System.Drawing.Size(100, 46);
-            this.btn_delete_ins.TabIndex = 18;
-            this.btn_delete_ins.Text = "Delete";
-            this.btn_delete_ins.UseVisualStyleBackColor = false;
-            this.btn_delete_ins.Click += new System.EventHandler(this.btn_delete_ins_Click);
+            btn_delete_ins.BackColor = Color.Red;
+            btn_delete_ins.FlatAppearance.BorderSize = 0;
+            btn_delete_ins.FlatStyle = FlatStyle.Flat;
+            btn_delete_ins.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_delete_ins.ForeColor = Color.White;
+            btn_delete_ins.Location = new Point(563, 236);
+            btn_delete_ins.Name = "btn_delete_ins";
+            btn_delete_ins.Size = new Size(100, 46);
+            btn_delete_ins.TabIndex = 18;
+            btn_delete_ins.Text = "Delete";
+            btn_delete_ins.UseVisualStyleBackColor = false;
+            btn_delete_ins.Click += btn_delete_ins_Click;
             // 
             // btn_update_ins
             // 
-            this.btn_update_ins.BackColor = System.Drawing.Color.Yellow;
-            this.btn_update_ins.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
-            this.btn_update_ins.FlatAppearance.BorderSize = 0;
-            this.btn_update_ins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_update_ins.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_update_ins.Location = new System.Drawing.Point(418, 236);
-            this.btn_update_ins.Name = "btn_update_ins";
-            this.btn_update_ins.Size = new System.Drawing.Size(100, 46);
-            this.btn_update_ins.TabIndex = 19;
-            this.btn_update_ins.Text = "Update";
-            this.btn_update_ins.UseVisualStyleBackColor = false;
-            this.btn_update_ins.Click += new System.EventHandler(this.btn_update_ins_Click);
+            btn_update_ins.BackColor = Color.Yellow;
+            btn_update_ins.FlatAppearance.BorderColor = Color.Yellow;
+            btn_update_ins.FlatAppearance.BorderSize = 0;
+            btn_update_ins.FlatStyle = FlatStyle.Flat;
+            btn_update_ins.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_update_ins.Location = new Point(418, 236);
+            btn_update_ins.Name = "btn_update_ins";
+            btn_update_ins.Size = new Size(100, 46);
+            btn_update_ins.TabIndex = 19;
+            btn_update_ins.Text = "Update";
+            btn_update_ins.UseVisualStyleBackColor = false;
+            btn_update_ins.Click += btn_update_ins_Click;
             // 
             // btn_add_ins
             // 
-            this.btn_add_ins.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn_add_ins.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn_add_ins.FlatAppearance.BorderSize = 0;
-            this.btn_add_ins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add_ins.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_add_ins.ForeColor = System.Drawing.Color.White;
-            this.btn_add_ins.Location = new System.Drawing.Point(254, 236);
-            this.btn_add_ins.Name = "btn_add_ins";
-            this.btn_add_ins.Size = new System.Drawing.Size(100, 46);
-            this.btn_add_ins.TabIndex = 17;
-            this.btn_add_ins.Text = "Add ";
-            this.btn_add_ins.UseVisualStyleBackColor = false;
-            this.btn_add_ins.Click += new System.EventHandler(this.btn_add_ins_Click);
+            btn_add_ins.BackColor = Color.FromArgb(0, 192, 0);
+            btn_add_ins.FlatAppearance.BorderColor = Color.FromArgb(0, 192, 0);
+            btn_add_ins.FlatAppearance.BorderSize = 0;
+            btn_add_ins.FlatStyle = FlatStyle.Flat;
+            btn_add_ins.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_add_ins.ForeColor = Color.White;
+            btn_add_ins.Location = new Point(254, 236);
+            btn_add_ins.Name = "btn_add_ins";
+            btn_add_ins.Size = new Size(100, 46);
+            btn_add_ins.TabIndex = 17;
+            btn_add_ins.Text = "Add ";
+            btn_add_ins.UseVisualStyleBackColor = false;
+            btn_add_ins.Click += btn_add_ins_Click;
             // 
             // cb_depts
             // 
-            this.cb_depts.FormattingEnabled = true;
-            this.cb_depts.Location = new System.Drawing.Point(518, 79);
-            this.cb_depts.Name = "cb_depts";
-            this.cb_depts.Size = new System.Drawing.Size(207, 28);
-            this.cb_depts.TabIndex = 37;
+            cb_depts.FormattingEnabled = true;
+            cb_depts.Location = new Point(518, 79);
+            cb_depts.Name = "cb_depts";
+            cb_depts.Size = new Size(207, 28);
+            cb_depts.TabIndex = 37;
             // 
             // lbl_std_lname
             // 
-            this.lbl_std_lname.AutoSize = true;
-            this.lbl_std_lname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_lname.Location = new System.Drawing.Point(28, 83);
-            this.lbl_std_lname.Name = "lbl_std_lname";
-            this.lbl_std_lname.Size = new System.Drawing.Size(51, 20);
-            this.lbl_std_lname.TabIndex = 26;
-            this.lbl_std_lname.Text = "Name";
-            this.lbl_std_lname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbl_std_lname.AutoSize = true;
+            lbl_std_lname.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_std_lname.Location = new Point(28, 83);
+            lbl_std_lname.Name = "lbl_std_lname";
+            lbl_std_lname.Size = new Size(51, 20);
+            lbl_std_lname.TabIndex = 26;
+            lbl_std_lname.Text = "Name";
+            lbl_std_lname.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txt_insName
             // 
-            this.txt_insName.Location = new System.Drawing.Point(120, 80);
-            this.txt_insName.Name = "txt_insName";
-            this.txt_insName.Size = new System.Drawing.Size(267, 27);
-            this.txt_insName.TabIndex = 23;
+            txt_insName.Location = new Point(120, 80);
+            txt_insName.Name = "txt_insName";
+            txt_insName.Size = new Size(267, 27);
+            txt_insName.TabIndex = 23;
             // 
             // txt_ins_email
             // 
-            this.txt_ins_email.Location = new System.Drawing.Point(120, 132);
-            this.txt_ins_email.Name = "txt_ins_email";
-            this.txt_ins_email.Size = new System.Drawing.Size(605, 27);
-            this.txt_ins_email.TabIndex = 27;
+            txt_ins_email.Location = new Point(120, 132);
+            txt_ins_email.Name = "txt_ins_email";
+            txt_ins_email.Size = new Size(605, 27);
+            txt_ins_email.TabIndex = 27;
             // 
             // lbl_std_email
             // 
-            this.lbl_std_email.AutoSize = true;
-            this.lbl_std_email.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_email.Location = new System.Drawing.Point(28, 139);
-            this.lbl_std_email.Name = "lbl_std_email";
-            this.lbl_std_email.Size = new System.Drawing.Size(47, 20);
-            this.lbl_std_email.TabIndex = 30;
-            this.lbl_std_email.Text = "Email";
-            this.lbl_std_email.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lbl_std_email.AutoSize = true;
+            lbl_std_email.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_std_email.Location = new Point(28, 139);
+            lbl_std_email.Name = "lbl_std_email";
+            lbl_std_email.Size = new Size(47, 20);
+            lbl_std_email.TabIndex = 30;
+            lbl_std_email.Text = "Email";
+            lbl_std_email.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txt_ins_password
             // 
-            this.txt_ins_password.Location = new System.Drawing.Point(120, 175);
-            this.txt_ins_password.Name = "txt_ins_password";
-            this.txt_ins_password.Size = new System.Drawing.Size(605, 27);
-            this.txt_ins_password.TabIndex = 33;
+            txt_ins_password.Location = new Point(120, 175);
+            txt_ins_password.Name = "txt_ins_password";
+            txt_ins_password.Size = new Size(605, 27);
+            txt_ins_password.TabIndex = 33;
             // 
             // lbl_std_password
             // 
-            this.lbl_std_password.AutoSize = true;
-            this.lbl_std_password.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_std_password.Location = new System.Drawing.Point(28, 182);
-            this.lbl_std_password.Name = "lbl_std_password";
-            this.lbl_std_password.Size = new System.Drawing.Size(76, 20);
-            this.lbl_std_password.TabIndex = 34;
-            this.lbl_std_password.Text = "Password";
+            lbl_std_password.AutoSize = true;
+            lbl_std_password.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_std_password.Location = new Point(28, 182);
+            lbl_std_password.Name = "lbl_std_password";
+            lbl_std_password.Size = new Size(76, 20);
+            lbl_std_password.TabIndex = 34;
+            lbl_std_password.Text = "Password";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(418, 82);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 20);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Department";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(418, 82);
+            label1.Name = "label1";
+            label1.Size = new Size(94, 20);
+            label1.TabIndex = 36;
+            label1.Text = "Department";
             // 
             // icon_exit
             // 
-            this.icon_exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.icon_exit.FlatAppearance.BorderSize = 0;
-            this.icon_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.icon_exit.IconColor = System.Drawing.Color.Red;
-            this.icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.icon_exit.IconSize = 35;
-            this.icon_exit.Location = new System.Drawing.Point(697, 12);
-            this.icon_exit.Name = "icon_exit";
-            this.icon_exit.Size = new System.Drawing.Size(44, 32);
-            this.icon_exit.TabIndex = 41;
-            this.icon_exit.UseVisualStyleBackColor = true;
-            this.icon_exit.Click += new System.EventHandler(this.icon_exit_Click);
+            icon_exit.Cursor = Cursors.Hand;
+            icon_exit.FlatAppearance.BorderSize = 0;
+            icon_exit.FlatStyle = FlatStyle.Flat;
+            icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            icon_exit.IconColor = Color.Red;
+            icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            icon_exit.IconSize = 35;
+            icon_exit.Location = new Point(697, 12);
+            icon_exit.Name = "icon_exit";
+            icon_exit.Size = new Size(44, 32);
+            icon_exit.TabIndex = 41;
+            icon_exit.UseVisualStyleBackColor = true;
+            icon_exit.Click += icon_exit_Click;
             // 
             // chk_ins_user
             // 
-            this.chk_ins_user.AutoSize = true;
-            this.chk_ins_user.Location = new System.Drawing.Point(28, 249);
-            this.chk_ins_user.Name = "chk_ins_user";
-            this.chk_ins_user.Size = new System.Drawing.Size(194, 24);
-            this.chk_ins_user.TabIndex = 42;
-            this.chk_ins_user.Text = "Add as an instructor user";
-            this.chk_ins_user.UseVisualStyleBackColor = true;
+            chk_ins_user.AutoSize = true;
+            chk_ins_user.Location = new Point(28, 249);
+            chk_ins_user.Name = "chk_ins_user";
+            chk_ins_user.Size = new Size(194, 24);
+            chk_ins_user.TabIndex = 42;
+            chk_ins_user.Text = "Add as an instructor user";
+            chk_ins_user.UseVisualStyleBackColor = true;
             // 
             // InstructorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 595);
-            this.Controls.Add(this.chk_ins_user);
-            this.Controls.Add(this.icon_exit);
-            this.Controls.Add(this.cb_depts);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_std_password);
-            this.Controls.Add(this.txt_ins_password);
-            this.Controls.Add(this.lbl_std_email);
-            this.Controls.Add(this.txt_ins_email);
-            this.Controls.Add(this.lbl_std_lname);
-            this.Controls.Add(this.txt_insName);
-            this.Controls.Add(this.dgv_instructors);
-            this.Controls.Add(this.btn_delete_ins);
-            this.Controls.Add(this.btn_update_ins);
-            this.Controls.Add(this.btn_add_ins);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "InstructorForm";
-            this.Text = "Instructor";
-            this.Load += new System.EventHandler(this.Instructor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_instructors)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(753, 595);
+            Controls.Add(chk_ins_user);
+            Controls.Add(icon_exit);
+            Controls.Add(cb_depts);
+            Controls.Add(label1);
+            Controls.Add(lbl_std_password);
+            Controls.Add(txt_ins_password);
+            Controls.Add(lbl_std_email);
+            Controls.Add(txt_ins_email);
+            Controls.Add(lbl_std_lname);
+            Controls.Add(txt_insName);
+            Controls.Add(dgv_instructors);
+            Controls.Add(btn_delete_ins);
+            Controls.Add(btn_update_ins);
+            Controls.Add(btn_add_ins);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "InstructorForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Instructor";
+            Load += Instructor_Load;
+            ((System.ComponentModel.ISupportInitialize)dgv_instructors).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

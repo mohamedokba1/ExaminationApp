@@ -16,9 +16,11 @@ namespace ExaminationApp
     {
         ExaminationDbContext DB = new ExaminationDbContext();
         private int Id = 0;
-        public InstructorForm()
+        private Admin_Dashboard adminPage;
+        public InstructorForm(Admin_Dashboard adminPage)
         {
             InitializeComponent();
+            this.adminPage = adminPage;
         }
 
         private void Instructor_Load(object sender, EventArgs e)
@@ -39,7 +41,7 @@ namespace ExaminationApp
             txt_ins_password.Text = "";
             cb_depts.SelectedValue = "";
 
-            chk_ins_user.Checked= false;
+            chk_ins_user.Checked = false;
         }
 
         private void btn_add_ins_Click(object sender, EventArgs e)
@@ -139,6 +141,7 @@ namespace ExaminationApp
         private void icon_exit_Click(object sender, EventArgs e)
         {
             this.Close();
+            adminPage.Show();
         }
     }
 }

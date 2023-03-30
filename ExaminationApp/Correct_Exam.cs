@@ -14,7 +14,7 @@ namespace ExaminationApp
 {
     public partial class Correct_Exam : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
+        ExaminationDbContext DB = new ExaminationDbContext();
         private Instructor_Dashboard insPage;
         private int ExamId;
         private int St_Id;
@@ -41,13 +41,13 @@ namespace ExaminationApp
             cbx_std_ids.DataSource = stds;
             cbx_std_ids.ValueMember = "stdId";
             cbx_std_ids.DisplayMember = "stdName";
-            
+
         }
 
         private void cbx_std_ids_SelectedValueChanged(object sender, EventArgs e)
         {
-            St_Id= DB.Students.Where(s=>(s.StdFname+" "+s.StdLname) == cbx_std_ids.Text.ToString()).Select(s=>s.StdId).FirstOrDefault();
-            cbx_exam_ids.DataSource = DB.StudExams.Where(s=>s.StId==St_Id).ToList();
+            St_Id = DB.Students.Where(s => (s.StdFname + " " + s.StdLname) == cbx_std_ids.Text.ToString()).Select(s => s.StdId).FirstOrDefault();
+            cbx_exam_ids.DataSource = DB.StudExams.Where(s => s.StId == St_Id).ToList();
             cbx_exam_ids.ValueMember = "ExamId";
             cbx_exam_ids.DisplayMember = "ExamId";
         }

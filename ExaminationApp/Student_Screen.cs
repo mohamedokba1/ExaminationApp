@@ -14,7 +14,7 @@ namespace ExaminationApp
 {
     public partial class Student_Screen : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
+        ExaminationDbContext DB = new ExaminationDbContext();
         private Home homePage;
         private string stdEmail;
         private string studentFirstName;
@@ -36,7 +36,7 @@ namespace ExaminationApp
 
         private void btn_start_exam_Click(object sender, EventArgs e)
         {
-            Exam_Screen exam_Screen=new Exam_Screen(studentFirstName,cbx_courses.Text.ToString());
+            Exam_Screen exam_Screen = new Exam_Screen(studentFirstName, cbx_courses.Text.ToString());
             exam_Screen.ShowDialog();
             this.Close();
         }

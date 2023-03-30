@@ -18,9 +18,11 @@ namespace ExaminationApp
     {
         ExaminationDbContext DB = new ExaminationDbContext();
         private int Id = 0;
-        public DepartmentForm()
+        private Admin_Dashboard adminPage;
+        public DepartmentForm(Admin_Dashboard adminPage)
         {
             InitializeComponent();
+            this.adminPage = adminPage;
         }
 
         private void DepartmentForm_Load(object sender, EventArgs e)
@@ -100,6 +102,7 @@ namespace ExaminationApp
         private void icon_exit_Click(object sender, EventArgs e)
         {
             this.Close();
+            adminPage.Show();   
         }
     }
 }

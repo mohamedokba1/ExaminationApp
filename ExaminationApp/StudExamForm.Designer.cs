@@ -28,214 +28,214 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_dept_id = new System.Windows.Forms.Label();
-            this.btn_delete_dept = new System.Windows.Forms.Button();
-            this.btn_update_dept = new System.Windows.Forms.Button();
-            this.btn_add_dept = new System.Windows.Forms.Button();
-            this.dgv_StdExam = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cb_stds = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cb_exams = new System.Windows.Forms.ComboBox();
-            this.icon_exit = new FontAwesome.Sharp.IconButton();
-            this.cb_status = new System.Windows.Forms.ComboBox();
-            this.txt_st_score = new System.Windows.Forms.NumericUpDown();
-            this.dtp_date = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_StdExam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_st_score)).BeginInit();
-            this.SuspendLayout();
+            label2 = new Label();
+            label1 = new Label();
+            lbl_dept_id = new Label();
+            btn_delete_dept = new Button();
+            btn_update_dept = new Button();
+            btn_add_dept = new Button();
+            dgv_StdExam = new DataGridView();
+            label3 = new Label();
+            cb_stds = new ComboBox();
+            label4 = new Label();
+            cb_exams = new ComboBox();
+            icon_exit = new FontAwesome.Sharp.IconButton();
+            cb_status = new ComboBox();
+            txt_st_score = new NumericUpDown();
+            dtp_date = new DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)dgv_StdExam).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txt_st_score).BeginInit();
+            SuspendLayout();
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(52, 203);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 28);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Score";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(52, 203);
+            label2.Name = "label2";
+            label2.Size = new Size(64, 28);
+            label2.TabIndex = 50;
+            label2.Text = "Score";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(140, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 28);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "Exam";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(140, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(63, 28);
+            label1.TabIndex = 49;
+            label1.Text = "Exam";
             // 
             // lbl_dept_id
             // 
-            this.lbl_dept_id.AutoSize = true;
-            this.lbl_dept_id.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_dept_id.Location = new System.Drawing.Point(117, 87);
-            this.lbl_dept_id.Name = "lbl_dept_id";
-            this.lbl_dept_id.Size = new System.Drawing.Size(86, 28);
-            this.lbl_dept_id.TabIndex = 48;
-            this.lbl_dept_id.Text = "Student";
+            lbl_dept_id.AutoSize = true;
+            lbl_dept_id.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_dept_id.Location = new Point(117, 87);
+            lbl_dept_id.Name = "lbl_dept_id";
+            lbl_dept_id.Size = new Size(86, 28);
+            lbl_dept_id.TabIndex = 48;
+            lbl_dept_id.Text = "Student";
             // 
             // btn_delete_dept
             // 
-            this.btn_delete_dept.BackColor = System.Drawing.Color.Red;
-            this.btn_delete_dept.FlatAppearance.BorderSize = 0;
-            this.btn_delete_dept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_dept.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_delete_dept.ForeColor = System.Drawing.Color.White;
-            this.btn_delete_dept.Location = new System.Drawing.Point(353, 275);
-            this.btn_delete_dept.Name = "btn_delete_dept";
-            this.btn_delete_dept.Size = new System.Drawing.Size(106, 48);
-            this.btn_delete_dept.TabIndex = 42;
-            this.btn_delete_dept.Text = "Delete";
-            this.btn_delete_dept.UseVisualStyleBackColor = false;
-            this.btn_delete_dept.Click += new System.EventHandler(this.btn_delete_dept_Click);
+            btn_delete_dept.BackColor = Color.Red;
+            btn_delete_dept.FlatAppearance.BorderSize = 0;
+            btn_delete_dept.FlatStyle = FlatStyle.Flat;
+            btn_delete_dept.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_delete_dept.ForeColor = Color.White;
+            btn_delete_dept.Location = new Point(394, 275);
+            btn_delete_dept.Name = "btn_delete_dept";
+            btn_delete_dept.Size = new Size(106, 48);
+            btn_delete_dept.TabIndex = 42;
+            btn_delete_dept.Text = "Delete";
+            btn_delete_dept.UseVisualStyleBackColor = false;
+            btn_delete_dept.Click += btn_delete_dept_Click;
             // 
             // btn_update_dept
             // 
-            this.btn_update_dept.BackColor = System.Drawing.Color.Gold;
-            this.btn_update_dept.FlatAppearance.BorderSize = 0;
-            this.btn_update_dept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_update_dept.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_update_dept.Location = new System.Drawing.Point(225, 275);
-            this.btn_update_dept.Name = "btn_update_dept";
-            this.btn_update_dept.Size = new System.Drawing.Size(106, 48);
-            this.btn_update_dept.TabIndex = 43;
-            this.btn_update_dept.Text = "Update";
-            this.btn_update_dept.UseVisualStyleBackColor = false;
-            this.btn_update_dept.Click += new System.EventHandler(this.btn_update_dept_Click);
+            btn_update_dept.BackColor = Color.Gold;
+            btn_update_dept.FlatAppearance.BorderSize = 0;
+            btn_update_dept.FlatStyle = FlatStyle.Flat;
+            btn_update_dept.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_update_dept.Location = new Point(246, 275);
+            btn_update_dept.Name = "btn_update_dept";
+            btn_update_dept.Size = new Size(106, 48);
+            btn_update_dept.TabIndex = 43;
+            btn_update_dept.Text = "Update";
+            btn_update_dept.UseVisualStyleBackColor = false;
+            btn_update_dept.Click += btn_update_dept_Click;
             // 
             // btn_add_dept
             // 
-            this.btn_add_dept.BackColor = System.Drawing.Color.YellowGreen;
-            this.btn_add_dept.FlatAppearance.BorderSize = 0;
-            this.btn_add_dept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add_dept.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_add_dept.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_add_dept.Location = new System.Drawing.Point(102, 275);
-            this.btn_add_dept.Name = "btn_add_dept";
-            this.btn_add_dept.Size = new System.Drawing.Size(106, 48);
-            this.btn_add_dept.TabIndex = 44;
-            this.btn_add_dept.Text = "Add";
-            this.btn_add_dept.UseVisualStyleBackColor = false;
-            this.btn_add_dept.Click += new System.EventHandler(this.btn_add_dept_Click);
+            btn_add_dept.BackColor = Color.YellowGreen;
+            btn_add_dept.FlatAppearance.BorderSize = 0;
+            btn_add_dept.FlatStyle = FlatStyle.Flat;
+            btn_add_dept.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_add_dept.ForeColor = SystemColors.ButtonHighlight;
+            btn_add_dept.Location = new Point(102, 275);
+            btn_add_dept.Name = "btn_add_dept";
+            btn_add_dept.Size = new Size(106, 48);
+            btn_add_dept.TabIndex = 44;
+            btn_add_dept.Text = "Add";
+            btn_add_dept.UseVisualStyleBackColor = false;
+            btn_add_dept.Click += btn_add_dept_Click;
             // 
             // dgv_StdExam
             // 
-            this.dgv_StdExam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_StdExam.Location = new System.Drawing.Point(12, 342);
-            this.dgv_StdExam.Name = "dgv_StdExam";
-            this.dgv_StdExam.RowHeadersWidth = 51;
-            this.dgv_StdExam.RowTemplate.Height = 29;
-            this.dgv_StdExam.Size = new System.Drawing.Size(579, 192);
-            this.dgv_StdExam.TabIndex = 41;
-            this.dgv_StdExam.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_StdExam_RowHeaderMouseDoubleClick);
+            dgv_StdExam.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_StdExam.Location = new Point(12, 342);
+            dgv_StdExam.Name = "dgv_StdExam";
+            dgv_StdExam.RowHeadersWidth = 51;
+            dgv_StdExam.RowTemplate.Height = 29;
+            dgv_StdExam.Size = new Size(579, 192);
+            dgv_StdExam.TabIndex = 41;
+            dgv_StdExam.RowHeaderMouseDoubleClick += dgv_StdExam_RowHeaderMouseDoubleClick;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(132, 141);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 28);
-            this.label3.TabIndex = 53;
-            this.label3.Text = "Status";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(132, 141);
+            label3.Name = "label3";
+            label3.Size = new Size(71, 28);
+            label3.TabIndex = 53;
+            label3.Text = "Status";
             // 
             // cb_stds
             // 
-            this.cb_stds.FormattingEnabled = true;
-            this.cb_stds.Location = new System.Drawing.Point(246, 91);
-            this.cb_stds.Name = "cb_stds";
-            this.cb_stds.Size = new System.Drawing.Size(225, 28);
-            this.cb_stds.TabIndex = 52;
+            cb_stds.FormattingEnabled = true;
+            cb_stds.Location = new Point(246, 91);
+            cb_stds.Name = "cb_stds";
+            cb_stds.Size = new Size(225, 28);
+            cb_stds.TabIndex = 52;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(217, 206);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 28);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "Exam Date";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(217, 206);
+            label4.Name = "label4";
+            label4.Size = new Size(114, 28);
+            label4.TabIndex = 55;
+            label4.Text = "Exam Date";
             // 
             // cb_exams
             // 
-            this.cb_exams.FormattingEnabled = true;
-            this.cb_exams.Location = new System.Drawing.Point(246, 37);
-            this.cb_exams.Name = "cb_exams";
-            this.cb_exams.Size = new System.Drawing.Size(225, 28);
-            this.cb_exams.TabIndex = 54;
+            cb_exams.FormattingEnabled = true;
+            cb_exams.Location = new Point(246, 37);
+            cb_exams.Name = "cb_exams";
+            cb_exams.Size = new Size(225, 28);
+            cb_exams.TabIndex = 54;
             // 
             // icon_exit
             // 
-            this.icon_exit.BackColor = System.Drawing.Color.Transparent;
-            this.icon_exit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.icon_exit.FlatAppearance.BorderSize = 0;
-            this.icon_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            this.icon_exit.IconColor = System.Drawing.Color.Red;
-            this.icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.icon_exit.IconSize = 35;
-            this.icon_exit.Location = new System.Drawing.Point(547, 12);
-            this.icon_exit.Name = "icon_exit";
-            this.icon_exit.Size = new System.Drawing.Size(44, 41);
-            this.icon_exit.TabIndex = 57;
-            this.icon_exit.UseVisualStyleBackColor = false;
-            this.icon_exit.Click += new System.EventHandler(this.icon_exit_Click);
+            icon_exit.BackColor = Color.Transparent;
+            icon_exit.Cursor = Cursors.Hand;
+            icon_exit.FlatAppearance.BorderSize = 0;
+            icon_exit.FlatStyle = FlatStyle.Flat;
+            icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            icon_exit.IconColor = Color.Red;
+            icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            icon_exit.IconSize = 35;
+            icon_exit.Location = new Point(547, 12);
+            icon_exit.Name = "icon_exit";
+            icon_exit.Size = new Size(44, 41);
+            icon_exit.TabIndex = 57;
+            icon_exit.UseVisualStyleBackColor = false;
+            icon_exit.Click += icon_exit_Click;
             // 
             // cb_status
             // 
-            this.cb_status.FormattingEnabled = true;
-            this.cb_status.Location = new System.Drawing.Point(246, 141);
-            this.cb_status.Name = "cb_status";
-            this.cb_status.Size = new System.Drawing.Size(225, 28);
-            this.cb_status.TabIndex = 58;
+            cb_status.FormattingEnabled = true;
+            cb_status.Location = new Point(246, 141);
+            cb_status.Name = "cb_status";
+            cb_status.Size = new Size(225, 28);
+            cb_status.TabIndex = 58;
             // 
             // txt_st_score
             // 
-            this.txt_st_score.Location = new System.Drawing.Point(122, 207);
-            this.txt_st_score.Name = "txt_st_score";
-            this.txt_st_score.Size = new System.Drawing.Size(63, 27);
-            this.txt_st_score.TabIndex = 59;
+            txt_st_score.Location = new Point(122, 207);
+            txt_st_score.Name = "txt_st_score";
+            txt_st_score.Size = new Size(63, 27);
+            txt_st_score.TabIndex = 59;
             // 
             // dtp_date
             // 
-            this.dtp_date.Location = new System.Drawing.Point(337, 205);
-            this.dtp_date.Name = "dtp_date";
-            this.dtp_date.Size = new System.Drawing.Size(238, 27);
-            this.dtp_date.TabIndex = 60;
+            dtp_date.Location = new Point(337, 208);
+            dtp_date.Name = "dtp_date";
+            dtp_date.Size = new Size(238, 27);
+            dtp_date.TabIndex = 60;
             // 
             // StudExamForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 557);
-            this.Controls.Add(this.dtp_date);
-            this.Controls.Add(this.txt_st_score);
-            this.Controls.Add(this.cb_status);
-            this.Controls.Add(this.icon_exit);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cb_exams);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cb_stds);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_dept_id);
-            this.Controls.Add(this.btn_delete_dept);
-            this.Controls.Add(this.btn_update_dept);
-            this.Controls.Add(this.btn_add_dept);
-            this.Controls.Add(this.dgv_StdExam);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StudExamForm";
-            this.Text = "StudExamForm";
-            this.Load += new System.EventHandler(this.StudExamForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_StdExam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_st_score)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(603, 557);
+            Controls.Add(dtp_date);
+            Controls.Add(txt_st_score);
+            Controls.Add(cb_status);
+            Controls.Add(icon_exit);
+            Controls.Add(label4);
+            Controls.Add(cb_exams);
+            Controls.Add(label3);
+            Controls.Add(cb_stds);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(lbl_dept_id);
+            Controls.Add(btn_delete_dept);
+            Controls.Add(btn_update_dept);
+            Controls.Add(btn_add_dept);
+            Controls.Add(dgv_StdExam);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "StudExamForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "StudExamForm";
+            Load += StudExamForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dgv_StdExam).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txt_st_score).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

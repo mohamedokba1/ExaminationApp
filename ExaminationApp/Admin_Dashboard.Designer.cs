@@ -28,131 +28,145 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_mng_students = new System.Windows.Forms.Button();
-            this.btn_mng_instructors = new System.Windows.Forms.Button();
-            this.btn_mng_departments = new System.Windows.Forms.Button();
-            this.btn_mng_exam = new System.Windows.Forms.Button();
-            this.lbl_admin_dashboard = new System.Windows.Forms.Label();
-            this.btn_mng_topics = new System.Windows.Forms.Button();
-            this.btn_mng_courses = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            btn_mng_students = new Button();
+            btn_mng_instructors = new Button();
+            btn_mng_departments = new Button();
+            btn_mng_exam = new Button();
+            btn_mng_topics = new Button();
+            btn_mng_courses = new Button();
+            label1 = new Label();
+            icon_exit = new FontAwesome.Sharp.IconButton();
+            SuspendLayout();
             // 
             // btn_mng_students
             // 
-            this.btn_mng_students.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mng_students.BackColor = System.Drawing.Color.Silver;
-            this.btn_mng_students.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_students.ForeColor = System.Drawing.Color.Black;
-            this.btn_mng_students.Location = new System.Drawing.Point(159, 241);
-            this.btn_mng_students.Name = "btn_mng_students";
-            this.btn_mng_students.Size = new System.Drawing.Size(287, 199);
-            this.btn_mng_students.TabIndex = 0;
-            this.btn_mng_students.Text = "Manage Students";
-            this.btn_mng_students.UseVisualStyleBackColor = false;
-            this.btn_mng_students.Click += new System.EventHandler(this.btn_mng_students_Click);
+            btn_mng_students.Anchor = AnchorStyles.None;
+            btn_mng_students.BackColor = Color.Silver;
+            btn_mng_students.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_mng_students.ForeColor = Color.Black;
+            btn_mng_students.Location = new Point(557, 186);
+            btn_mng_students.Name = "btn_mng_students";
+            btn_mng_students.Size = new Size(469, 166);
+            btn_mng_students.TabIndex = 0;
+            btn_mng_students.Text = "Manage Students";
+            btn_mng_students.UseVisualStyleBackColor = false;
+            btn_mng_students.Click += btn_mng_students_Click;
             // 
             // btn_mng_instructors
             // 
-            this.btn_mng_instructors.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mng_instructors.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.btn_mng_instructors.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_instructors.ForeColor = System.Drawing.Color.White;
-            this.btn_mng_instructors.Location = new System.Drawing.Point(507, 241);
-            this.btn_mng_instructors.Name = "btn_mng_instructors";
-            this.btn_mng_instructors.Size = new System.Drawing.Size(287, 199);
-            this.btn_mng_instructors.TabIndex = 0;
-            this.btn_mng_instructors.Text = "Manage Instructors";
-            this.btn_mng_instructors.UseVisualStyleBackColor = false;
-            this.btn_mng_instructors.Click += new System.EventHandler(this.btn_mng_instructors_Click);
+            btn_mng_instructors.Anchor = AnchorStyles.None;
+            btn_mng_instructors.BackColor = SystemColors.MenuHighlight;
+            btn_mng_instructors.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_mng_instructors.ForeColor = Color.White;
+            btn_mng_instructors.Location = new Point(23, 186);
+            btn_mng_instructors.Name = "btn_mng_instructors";
+            btn_mng_instructors.Size = new Size(469, 166);
+            btn_mng_instructors.TabIndex = 0;
+            btn_mng_instructors.Text = "Manage Instructors";
+            btn_mng_instructors.UseVisualStyleBackColor = false;
+            btn_mng_instructors.Click += btn_mng_instructors_Click;
             // 
             // btn_mng_departments
             // 
-            this.btn_mng_departments.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mng_departments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btn_mng_departments.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_departments.ForeColor = System.Drawing.Color.White;
-            this.btn_mng_departments.Location = new System.Drawing.Point(849, 241);
-            this.btn_mng_departments.Name = "btn_mng_departments";
-            this.btn_mng_departments.Size = new System.Drawing.Size(287, 199);
-            this.btn_mng_departments.TabIndex = 0;
-            this.btn_mng_departments.Text = "Manage Departments";
-            this.btn_mng_departments.UseVisualStyleBackColor = false;
-            this.btn_mng_departments.Click += new System.EventHandler(this.btn_mng_departments_Click);
+            btn_mng_departments.Anchor = AnchorStyles.None;
+            btn_mng_departments.BackColor = Color.FromArgb(255, 192, 128);
+            btn_mng_departments.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_mng_departments.ForeColor = Color.White;
+            btn_mng_departments.Location = new Point(23, 419);
+            btn_mng_departments.Name = "btn_mng_departments";
+            btn_mng_departments.Size = new Size(469, 166);
+            btn_mng_departments.TabIndex = 0;
+            btn_mng_departments.Text = "Manage Departments";
+            btn_mng_departments.UseVisualStyleBackColor = false;
+            btn_mng_departments.Click += btn_mng_departments_Click;
             // 
             // btn_mng_exam
             // 
-            this.btn_mng_exam.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mng_exam.BackColor = System.Drawing.Color.Yellow;
-            this.btn_mng_exam.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_exam.Location = new System.Drawing.Point(159, 446);
-            this.btn_mng_exam.Name = "btn_mng_exam";
-            this.btn_mng_exam.Size = new System.Drawing.Size(287, 199);
-            this.btn_mng_exam.TabIndex = 0;
-            this.btn_mng_exam.Text = "Manage Exam";
-            this.btn_mng_exam.UseVisualStyleBackColor = false;
-            this.btn_mng_exam.Click += new System.EventHandler(this.btn_mng_exam_Click);
-            // 
-            // lbl_admin_dashboard
-            // 
-            this.lbl_admin_dashboard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_admin_dashboard.BackColor = System.Drawing.Color.SteelBlue;
-            this.lbl_admin_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lbl_admin_dashboard.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_admin_dashboard.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_admin_dashboard.Location = new System.Drawing.Point(-34, -15);
-            this.lbl_admin_dashboard.Name = "lbl_admin_dashboard";
-            this.lbl_admin_dashboard.Padding = new System.Windows.Forms.Padding(57, 67, 57, 67);
-            this.lbl_admin_dashboard.Size = new System.Drawing.Size(1533, 215);
-            this.lbl_admin_dashboard.TabIndex = 3;
-            this.lbl_admin_dashboard.Text = "Admin Dashboard";
-            this.lbl_admin_dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            btn_mng_exam.Anchor = AnchorStyles.None;
+            btn_mng_exam.BackColor = Color.Yellow;
+            btn_mng_exam.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_mng_exam.Location = new Point(557, 419);
+            btn_mng_exam.Name = "btn_mng_exam";
+            btn_mng_exam.Size = new Size(469, 166);
+            btn_mng_exam.TabIndex = 0;
+            btn_mng_exam.Text = "Manage Exam";
+            btn_mng_exam.UseVisualStyleBackColor = false;
+            btn_mng_exam.Click += btn_mng_exam_Click;
             // 
             // btn_mng_topics
             // 
-            this.btn_mng_topics.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mng_topics.BackColor = System.Drawing.Color.RosyBrown;
-            this.btn_mng_topics.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_topics.ForeColor = System.Drawing.Color.White;
-            this.btn_mng_topics.Location = new System.Drawing.Point(849, 446);
-            this.btn_mng_topics.Name = "btn_mng_topics";
-            this.btn_mng_topics.Size = new System.Drawing.Size(287, 199);
-            this.btn_mng_topics.TabIndex = 7;
-            this.btn_mng_topics.Text = "Manage Topics";
-            this.btn_mng_topics.UseVisualStyleBackColor = false;
-            this.btn_mng_topics.Click += new System.EventHandler(this.btn_mng_topics_Click);
+            btn_mng_topics.Anchor = AnchorStyles.None;
+            btn_mng_topics.BackColor = Color.RosyBrown;
+            btn_mng_topics.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_mng_topics.ForeColor = Color.White;
+            btn_mng_topics.Location = new Point(23, 651);
+            btn_mng_topics.Name = "btn_mng_topics";
+            btn_mng_topics.Size = new Size(469, 166);
+            btn_mng_topics.TabIndex = 7;
+            btn_mng_topics.Text = "Manage Topics";
+            btn_mng_topics.UseVisualStyleBackColor = false;
+            btn_mng_topics.Click += btn_mng_topics_Click;
             // 
             // btn_mng_courses
             // 
-            this.btn_mng_courses.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_mng_courses.BackColor = System.Drawing.Color.Coral;
-            this.btn_mng_courses.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_mng_courses.ForeColor = System.Drawing.Color.White;
-            this.btn_mng_courses.Location = new System.Drawing.Point(507, 446);
-            this.btn_mng_courses.Name = "btn_mng_courses";
-            this.btn_mng_courses.Size = new System.Drawing.Size(287, 199);
-            this.btn_mng_courses.TabIndex = 8;
-            this.btn_mng_courses.Text = "Manage Courses";
-            this.btn_mng_courses.UseVisualStyleBackColor = false;
-            this.btn_mng_courses.Click += new System.EventHandler(this.btn_mng_courses_Click);
+            btn_mng_courses.Anchor = AnchorStyles.None;
+            btn_mng_courses.BackColor = Color.Coral;
+            btn_mng_courses.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_mng_courses.ForeColor = Color.White;
+            btn_mng_courses.Location = new Point(557, 651);
+            btn_mng_courses.Name = "btn_mng_courses";
+            btn_mng_courses.Size = new Size(469, 166);
+            btn_mng_courses.TabIndex = 8;
+            btn_mng_courses.Text = "Manage Courses";
+            btn_mng_courses.UseVisualStyleBackColor = false;
+            btn_mng_courses.Click += btn_mng_courses_Click;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 55F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlText;
+            label1.Location = new Point(337, 29);
+            label1.Name = "label1";
+            label1.Size = new Size(375, 123);
+            label1.TabIndex = 9;
+            label1.Text = "ADMIN";
+            // 
+            // icon_exit
+            // 
+            icon_exit.FlatAppearance.BorderSize = 0;
+            icon_exit.FlatStyle = FlatStyle.Flat;
+            icon_exit.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            icon_exit.IconColor = Color.Red;
+            icon_exit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            icon_exit.IconSize = 35;
+            icon_exit.Location = new Point(1001, 12);
+            icon_exit.Name = "icon_exit";
+            icon_exit.Size = new Size(47, 39);
+            icon_exit.TabIndex = 10;
+            icon_exit.UseVisualStyleBackColor = true;
+            icon_exit.Click += icon_exit_Click;
             // 
             // Admin_Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 649);
-            this.Controls.Add(this.btn_mng_topics);
-            this.Controls.Add(this.btn_mng_courses);
-            this.Controls.Add(this.lbl_admin_dashboard);
-            this.Controls.Add(this.btn_mng_exam);
-            this.Controls.Add(this.btn_mng_departments);
-            this.Controls.Add(this.btn_mng_instructors);
-            this.Controls.Add(this.btn_mng_students);
-            this.Name = "Admin_Dashboard";
-            this.Text = "Admin Dashboard";
-            this.Load += new System.EventHandler(this.Admin_Dashboard_Load);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1060, 881);
+            Controls.Add(icon_exit);
+            Controls.Add(label1);
+            Controls.Add(btn_mng_topics);
+            Controls.Add(btn_mng_courses);
+            Controls.Add(btn_mng_exam);
+            Controls.Add(btn_mng_departments);
+            Controls.Add(btn_mng_instructors);
+            Controls.Add(btn_mng_students);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Admin_Dashboard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Admin Dashboard";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -161,8 +175,9 @@
         private Button btn_mng_instructors;
         private Button btn_mng_departments;
         private Button btn_mng_exam;
-        private Label lbl_admin_dashboard;
         private Button btn_mng_topics;
         private Button btn_mng_courses;
+        private Label label1;
+        private FontAwesome.Sharp.IconButton icon_exit;
     }
 }

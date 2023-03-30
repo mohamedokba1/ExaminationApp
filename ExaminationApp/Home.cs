@@ -4,14 +4,12 @@ namespace ExaminationApp
 {
     public partial class Home : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
+        ExaminationDbContext Context = new ExaminationDbContext();
         public Home()
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
         }
-
-        
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -19,7 +17,7 @@ namespace ExaminationApp
                 DialogResult dialogResult = MessageBox.Show("Do you want really to exit ?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    Environment.Exit(0);
+                    System.Environment.Exit(0);
                 }
                 else
                 {
@@ -29,11 +27,11 @@ namespace ExaminationApp
             e.Cancel = true;
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        private void btn_login_Click_1(object sender, EventArgs e)
         {
-            string userEmail = txt_user_email.Text;
+            string userEmail = txt_user_email.Text.Trim();
             string userPassword = txt_user_password.Text;
-            var user = DB.Users.Where(user => user.UserEmail == userEmail && user.UserPassword == userPassword).FirstOrDefault();
+            var user = Context.Users.Where(user => user.UserEmail == userEmail && user.UserPassword == userPassword).FirstOrDefault();
             if (user != null)
             {
                 if (user.UserRole.ToLower() == "admin")
@@ -51,7 +49,7 @@ namespace ExaminationApp
                 else if (user.UserRole.ToLower() == "instructor")
                 {
                     this.Hide();
-                    Instructor_Dashboard instructorScreen = new Instructor_Dashboard(this,user.UserEmail);
+                    Instructor_Dashboard instructorScreen = new Instructor_Dashboard(this, user.UserEmail);
                     instructorScreen.ShowDialog();
                 }
             }

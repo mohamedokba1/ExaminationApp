@@ -14,11 +14,12 @@ namespace ExaminationApp
 {
     public partial class Exam_Screen : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
-        List<Question> questions ;
+        ExaminationDbContext DB = new ExaminationDbContext();
+        List<Question> questions;
         private string StdFname;
         private string Crs_Name;
         private int currentQuestionIndex = 0;
+        private DateTime examDate;
         private int Id = 0;
 
         public Exam_Screen(string stdFname, string crs_Name)
@@ -27,27 +28,26 @@ namespace ExaminationApp
             StdFname = stdFname;
             Crs_Name = crs_Name;
             var student = DB.Students.Where(s => s.StdFname == StdFname).Select(s => s.StdId).FirstOrDefault();
-
         }
         private void DisplayQuestion(Question question)
         {
             var course = DB.Courses.Where(c => c.CrsName == Crs_Name).Select(c => c.CrsId).FirstOrDefault();
             var duration = DB.Exams.Where(c => c.CrsId == course).Select(e => e.ExamDuration).FirstOrDefault();
-           
+
             lbl_question.Text = question.QuesBody;
             lbl_ex_date.Text = DateTime.Now.ToString();
             lbl_course_name.Text = Crs_Name;
             lbl_duration.Text = duration.ToString();
 
-            cb_choice1.Text = question.Choice1;
-            cb_choice2.Text = question.Choice2;
+            cb_choice1.Text = question.ChoiceA;
+            cb_choice2.Text = question.ChoiceB;
             if (question.QuesType == "TorF")
             {
                 cb_choice3.Visible = false;
             }
             else
             {
-                cb_choice3.Text = question.Choice3;
+                cb_choice3.Text = question.ChoiceC;
             }
             cb_choice1.Checked = false;
             cb_choice2.Checked = false;
@@ -56,6 +56,7 @@ namespace ExaminationApp
 
         private void Exam_Screen_Load(object sender, EventArgs e)
         {
+            lbl_ex_date.Text = DateTime.Now.ToString();
             var course = DB.Courses.Where(c => c.CrsName == Crs_Name).Select(c => c.CrsId).FirstOrDefault();
             var Exam = DB.Exams.Where(e => e.CrsId == course).Select(e => e.ExamId).FirstOrDefault();
             questions = DB.Questions.Where(q => q.CrsId == course).ToList();
@@ -69,7 +70,7 @@ namespace ExaminationApp
 
         private void btn_next_Click(object sender, EventArgs e)
         {
-            Id = DB.StudAnswers.Max(s => s.AnsId) + 10;
+            Id = DB.StdAnswers.Max(s => s.AnsId) + 10;
             var student = DB.Students.Where(s => s.StdFname == StdFname).Select(s => s.StdId).FirstOrDefault();
             var course = DB.Courses.Where(c => c.CrsName == Crs_Name).Select(c => c.CrsId).FirstOrDefault();
             var Exam = DB.Exams.Where(e => e.CrsId == course).Select(e => e.ExamId).FirstOrDefault();
@@ -85,7 +86,7 @@ namespace ExaminationApp
             {
                 Answer = cb_choice2.Text;
             }
-            else
+            else if (cb_choice3.Checked)
             {
                 Answer = cb_choice3.Text;
             }

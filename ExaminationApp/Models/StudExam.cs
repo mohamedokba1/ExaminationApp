@@ -14,4 +14,8 @@ public partial class StudExam
     public DateTime? ExamDate { get; set; }
 
     public string? Status { get; set; }
+
+    public virtual Exam Exam { get; set; } = null!;
+
+    public virtual Student St { get; set; } = null!;
 }

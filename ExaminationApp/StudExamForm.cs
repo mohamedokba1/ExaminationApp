@@ -22,16 +22,8 @@ namespace ExaminationApp
         public StudExamForm(Instructor_Dashboard insPage)
         {
             InitializeComponent();
-            this.insPage=insPage;
+            this.insPage = insPage;
         }
-
-        private void btn_back_home_Click(object sender, EventArgs e)
-        {
-            InstructorForm ins_Form = new InstructorForm();
-            ins_Form.Show();
-            this.Close();
-        }
-
         private void StudExamForm_Load(object sender, EventArgs e)
         {
             var stdExam = DB.StudExams.FromSql($"getAllStudExam").ToList();
@@ -141,6 +133,7 @@ namespace ExaminationApp
         private void icon_exit_Click(object sender, EventArgs e)
         {
             this.Close();
+            insPage.Show(); 
         }
     }
 }

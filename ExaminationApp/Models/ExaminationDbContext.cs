@@ -25,7 +25,7 @@ public partial class ExaminationDbContext : DbContext
 
     public virtual DbSet<Question> Questions { get; set; }
 
-    public virtual DbSet<StudAnswer> StudAnswers { get; set; }
+    public virtual DbSet<StdAnswer> StdAnswers { get; set; }
 
     public virtual DbSet<StudExam> StudExams { get; set; }
 
@@ -37,13 +37,13 @@ public partial class ExaminationDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=Dina;Database=ExaminationDB;Trusted_Connection=True;");
+        => optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ExaminationDB; Trusted_Connection=true; encrypt=false;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Course>(entity =>
         {
-            entity.HasKey(e => e.CrsId).HasName("PK__Course__ECAF5375E914BAB3");
+            entity.HasKey(e => e.CrsId).HasName("PK__Course__ECAF537566760A60");
 
             entity.ToTable("Course");
 
@@ -64,7 +64,7 @@ public partial class ExaminationDbContext : DbContext
 
         modelBuilder.Entity<Department>(entity =>
         {
-            entity.HasKey(e => e.DeptId).HasName("PK__Departme__DCA65974647F8EE3");
+            entity.HasKey(e => e.DeptId).HasName("PK__Departme__DCA6597406A12009");
 
             entity.ToTable("Department");
 
@@ -79,25 +79,43 @@ public partial class ExaminationDbContext : DbContext
 
         modelBuilder.Entity<Exam>(entity =>
         {
-            entity.HasKey(e => e.ExamId).HasName("PK__Exam__C782CA59D3567799");
+            entity.HasKey(e => e.ExamId).HasName("PK__Exam__C782CA59F15E0701");
 
             entity.ToTable("Exam");
 
-            entity.Property(e => e.ExamId)
-                .ValueGeneratedNever()
-                .HasColumnName("Exam_Id");
+            entity.Property(e => e.ExamId).HasColumnName("Exam_Id");
             entity.Property(e => e.CrsId).HasColumnName("Crs_Id");
             entity.Property(e => e.ExamDuration).HasColumnName("Exam_Duration");
             entity.Property(e => e.PassScore).HasColumnName("Pass_Score");
 
             entity.HasOne(d => d.Crs).WithMany(p => p.Exams)
                 .HasForeignKey(d => d.CrsId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Crs_Exam");
+
+            entity.HasMany(d => d.Quests).WithMany(p => p.Exams)
+                .UsingEntity<Dictionary<string, object>>(
+                    "ExamQuestion",
+                    r => r.HasOne<Question>().WithMany()
+                        .HasForeignKey("QuestId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_QUES"),
+                    l => l.HasOne<Exam>().WithMany()
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("FK_EXAM_QUESTION"),
+                    j =>
+                    {
+                        j.HasKey("ExamId", "QuestId").HasName("COPOSITE_PRIMARY");
+                        j.ToTable("Exam_Question");
+                        j.IndexerProperty<int>("ExamId").HasColumnName("exam_id");
+                        j.IndexerProperty<int>("QuestId").HasColumnName("quest_id");
+                    });
         });
 
         modelBuilder.Entity<Instructor>(entity =>
         {
-            entity.HasKey(e => e.InsId).HasName("PK__Instruct__9CB72D2063A3B640");
+            entity.HasKey(e => e.InsId).HasName("PK__Instruct__9CB72D2084B35B67");
 
             entity.ToTable("Instructor");
 
@@ -128,43 +146,46 @@ public partial class ExaminationDbContext : DbContext
                     r => r.HasOne<Course>().WithMany()
                         .HasForeignKey("CrsId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Ins_Course_Course"),
+                        .HasConstraintName("FK_COURSE"),
                     l => l.HasOne<Instructor>().WithMany()
                         .HasForeignKey("InsId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Ins_Course_Instructor"),
+                        .HasConstraintName("FK_INST"),
                     j =>
                     {
-                        j.HasKey("InsId", "CrsId");
+                        j.HasKey("InsId", "CrsId").HasName("PK_INS_COURSE");
                         j.ToTable("Ins_Course");
-                        j.IndexerProperty<int>("InsId").HasColumnName("Ins_Id");
-                        j.IndexerProperty<int>("CrsId").HasColumnName("Crs_Id");
+                        j.IndexerProperty<int>("InsId").HasColumnName("ins_id");
+                        j.IndexerProperty<int>("CrsId").HasColumnName("crs_id");
                     });
         });
 
         modelBuilder.Entity<Question>(entity =>
         {
-            entity.HasKey(e => e.QuesId).HasName("PK__Question__A821235E0E89713E");
+            entity.HasKey(e => e.QuesId).HasName("PK__Question__A821235ED6C1C177");
 
             entity.ToTable("Question");
 
             entity.Property(e => e.QuesId)
                 .ValueGeneratedNever()
                 .HasColumnName("Ques_Id");
-            entity.Property(e => e.Choice1)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Choice2)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Choice3)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+            entity.Property(e => e.ChoiceA)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("choice_a");
+            entity.Property(e => e.ChoiceB)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("choice_b");
+            entity.Property(e => e.ChoiceC)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("choice_c");
             entity.Property(e => e.CorrectAnswer)
-                .HasMaxLength(50)
+                .HasMaxLength(5)
                 .IsUnicode(false)
                 .HasColumnName("Correct_Answer");
-            entity.Property(e => e.CrsId).HasColumnName("Crs_Id");
+            entity.Property(e => e.CrsId).HasColumnName("crs_id");
             entity.Property(e => e.QuesBody)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -177,55 +198,35 @@ public partial class ExaminationDbContext : DbContext
             entity.HasOne(d => d.Crs).WithMany(p => p.Questions)
                 .HasForeignKey(d => d.CrsId)
                 .HasConstraintName("FK_Question_Course");
-
-            entity.HasMany(d => d.Exams).WithMany(p => p.Ques)
-                .UsingEntity<Dictionary<string, object>>(
-                    "ExamQue",
-                    r => r.HasOne<Exam>().WithMany()
-                        .HasForeignKey("ExamId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Exam_Ques_Exam"),
-                    l => l.HasOne<Question>().WithMany()
-                        .HasForeignKey("QuesId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Exam_Ques_Question"),
-                    j =>
-                    {
-                        j.HasKey("QuesId", "ExamId");
-                        j.ToTable("Exam_Ques");
-                        j.IndexerProperty<int>("QuesId").HasColumnName("Ques_Id");
-                        j.IndexerProperty<int>("ExamId").HasColumnName("Exam_Id");
-                    });
         });
 
-        modelBuilder.Entity<StudAnswer>(entity =>
+        modelBuilder.Entity<StdAnswer>(entity =>
         {
             entity.HasKey(e => e.AnsId);
 
-            entity.ToTable("Stud_Answer");
+            entity.ToTable("std_answer");
 
-            entity.Property(e => e.AnsId)
-                .ValueGeneratedNever()
-                .HasColumnName("Ans_Id");
+            entity.Property(e => e.AnsId).HasColumnName("Ans_Id");
             entity.Property(e => e.ExamId).HasColumnName("Exam_Id");
             entity.Property(e => e.QuesId).HasColumnName("Ques_Id");
             entity.Property(e => e.SelectedAnswer)
                 .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("Selected_Answer");
-            entity.Property(e => e.StId).HasColumnName("St_Id");
+            entity.Property(e => e.StdId).HasColumnName("std_id");
 
-            entity.HasOne(d => d.Exam).WithMany(p => p.StudAnswers)
+            entity.HasOne(d => d.Exam).WithMany(p => p.StdAnswers)
                 .HasForeignKey(d => d.ExamId)
-                .HasConstraintName("FK_Stud_Answer_Exam");
+                .HasConstraintName("FK_std_answer_Exam");
 
-            entity.HasOne(d => d.Ques).WithMany(p => p.StudAnswers)
+            entity.HasOne(d => d.Ques).WithMany(p => p.StdAnswers)
                 .HasForeignKey(d => d.QuesId)
-                .HasConstraintName("FK_Stud_Answer_Question");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_std_answer_Question");
 
-            entity.HasOne(d => d.St).WithMany(p => p.StudAnswers)
-                .HasForeignKey(d => d.StId)
-                .HasConstraintName("FK_Stud_Answer_Student");
+            entity.HasOne(d => d.Std).WithMany(p => p.StdAnswers)
+                .HasForeignKey(d => d.StdId)
+                .HasConstraintName("FK_std_answer_Student");
         });
 
         modelBuilder.Entity<StudExam>(entity =>
@@ -243,11 +244,21 @@ public partial class ExaminationDbContext : DbContext
             entity.Property(e => e.Status)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.Exam).WithMany(p => p.StudExams)
+                .HasForeignKey(d => d.ExamId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Stud_Exam_Exam");
+
+            entity.HasOne(d => d.St).WithMany(p => p.StudExams)
+                .HasForeignKey(d => d.StId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Stud_Exam_Student");
         });
 
         modelBuilder.Entity<Student>(entity =>
         {
-            entity.HasKey(e => e.StdId).HasName("PK__Student__0B0245BABE0D9F0B");
+            entity.HasKey(e => e.StdId).HasName("PK__Student__0B0245BA13FAB992");
 
             entity.ToTable("Student");
 
@@ -282,29 +293,30 @@ public partial class ExaminationDbContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK");
 
-            entity.HasMany(d => d.Crs).WithMany(p => p.Sts)
+            entity.HasMany(d => d.Crs).WithMany(p => p.Stds)
                 .UsingEntity<Dictionary<string, object>>(
-                    "StudCourse",
+                    "StdCourse",
                     r => r.HasOne<Course>().WithMany()
                         .HasForeignKey("CrsId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Stud_Course_Course"),
+                        .HasConstraintName("FK_Std_Course_Course"),
                     l => l.HasOne<Student>().WithMany()
-                        .HasForeignKey("StId")
+                        .HasForeignKey("StdId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Stud_Course_Student"),
+                        .HasConstraintName("FK_Std_Course_Student"),
                     j =>
                     {
-                        j.HasKey("StId", "CrsId");
-                        j.ToTable("Stud_Course");
-                        j.IndexerProperty<int>("StId").HasColumnName("St_Id");
-                        j.IndexerProperty<int>("CrsId").HasColumnName("Crs_Id");
+                        j.HasKey("StdId", "CrsId");
+                        j.ToTable("Std_Course");
+                        j.HasIndex(new[] { "StdId" }, "IX_Std_Course");
+                        j.IndexerProperty<int>("StdId").HasColumnName("std_id");
+                        j.IndexerProperty<int>("CrsId").HasColumnName("crs_id");
                     });
         });
 
         modelBuilder.Entity<Topic>(entity =>
         {
-            entity.HasKey(e => e.TopicId).HasName("PK__Topic__D5DAA3E925E5044D");
+            entity.HasKey(e => e.TopicId).HasName("PK__Topic__D5DAA3E9259D8D54");
 
             entity.ToTable("Topic");
 
@@ -319,7 +331,7 @@ public partial class ExaminationDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__CB9A1CFF04F425B3");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__CB9A1CFFFEEFDE9B");
 
             entity.Property(e => e.UserId).HasColumnName("userId");
             entity.Property(e => e.UserEmail)

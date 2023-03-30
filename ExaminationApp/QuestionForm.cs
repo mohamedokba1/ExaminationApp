@@ -19,7 +19,7 @@ namespace ExaminationApp
         private int Id = 0;
         private Instructor_Dashboard insScreen;
         private string insName;
-        public QuestionForm(Instructor_Dashboard insScreen,string insName)
+        public QuestionForm(Instructor_Dashboard insScreen, string insName)
         {
             InitializeComponent();
             this.insScreen = insScreen;
@@ -68,7 +68,8 @@ namespace ExaminationApp
             if (cbx_correct_answer.SelectedItem.ToString() == "a")
             {
                 correctAnswer = txt_choice_a.Text;
-            }else if(cbx_correct_answer.SelectedItem.ToString()=="b")
+            }
+            else if (cbx_correct_answer.SelectedItem.ToString() == "b")
             {
                 correctAnswer = txt_choice_b.Text;
             }

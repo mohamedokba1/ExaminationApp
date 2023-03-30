@@ -21,5 +21,5 @@ public partial class Course
 
     public virtual ICollection<Instructor> Ins { get; } = new List<Instructor>();
 
-    public virtual ICollection<Student> Sts { get; } = new List<Student>();
+    public virtual ICollection<Student> Stds { get; } = new List<Student>();
 }

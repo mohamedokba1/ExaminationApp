@@ -1,3 +1,4 @@
+
 namespace ExaminationApp
 {
     internal static class Program

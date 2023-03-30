@@ -16,58 +16,56 @@ namespace ExaminationApp
         public Admin_Dashboard(Home homePage)
         {
             InitializeComponent();
-            WindowState = FormWindowState.Maximized;
             this.homePage = homePage;
         }
 
         private void btn_mng_students_Click(object sender, EventArgs e)
         {
-            StudentForm std_form = new StudentForm();
+            this.Hide();
+            StudentForm std_form = new StudentForm(this);
             std_form.ShowDialog();
-            this.Close();
+
         }
 
         private void btn_mng_departments_Click(object sender, EventArgs e)
         {
-            DepartmentForm dept = new DepartmentForm();
+            this.Hide();
+            DepartmentForm dept = new DepartmentForm(this);
             dept.ShowDialog();
-            this.Close();
-
         }
 
         private void btn_mng_instructors_Click(object sender, EventArgs e)
         {
-            InstructorForm instructor = new InstructorForm();
+            this.Hide();
+            InstructorForm instructor = new InstructorForm(this);
             instructor.ShowDialog();
-            this.Close();
-
         }
 
         private void btn_mng_exam_Click(object sender, EventArgs e)
         {
-            ExamForm exam = new ExamForm();
+            this.Hide();
+            ExamForm exam = new ExamForm(this);
             exam.ShowDialog();
-            this.Close();
-
         }
 
         private void btn_mng_courses_Click(object sender, EventArgs e)
         {
-            CourseForm course = new CourseForm();
+            this.Hide();
+            CourseForm course = new CourseForm(this);
             course.ShowDialog();
-            this.Close();
         }
 
         private void btn_mng_topics_Click(object sender, EventArgs e)
         {
-            TopicForm topic = new TopicForm();
+            this.Hide();
+            TopicForm topic = new TopicForm(this);
             topic.ShowDialog();
-            this.Close();
         }
 
-        private void Admin_Dashboard_Load(object sender, EventArgs e)
+        private void icon_exit_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            homePage.Show();
         }
     }
 }

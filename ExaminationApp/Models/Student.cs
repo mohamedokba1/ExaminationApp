@@ -11,7 +11,7 @@ public partial class Student
 
     public string? StdLname { get; set; }
 
-    public int? StdAge { get; set; }
+    public byte? StdAge { get; set; }
 
     public string? StdAddress { get; set; }
 
@@ -23,7 +23,9 @@ public partial class Student
 
     public virtual Department? Dept { get; set; }
 
-    public virtual ICollection<StudAnswer> StudAnswers { get; } = new List<StudAnswer>();
+    public virtual ICollection<StdAnswer> StdAnswers { get; } = new List<StdAnswer>();
+
+    public virtual ICollection<StudExam> StudExams { get; } = new List<StudExam>();
 
     public virtual ICollection<Course> Crs { get; } = new List<Course>();
 }

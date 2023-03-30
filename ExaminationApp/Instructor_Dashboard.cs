@@ -14,15 +14,15 @@ namespace ExaminationApp
 {
     public partial class Instructor_Dashboard : Form
     {
-        ExaminationDbContext DB=new ExaminationDbContext();
+        ExaminationDbContext DB = new ExaminationDbContext();
         private Home homePage;
         private string insEmail;
         private string insName;
-        public Instructor_Dashboard(Home homePage,string insEmail)
+        public Instructor_Dashboard(Home homePage, string insEmail)
         {
             InitializeComponent();
             this.homePage = homePage;
-            this.insName = DB.Instructors.Where(i=>i.InsEmail==insEmail).Select(i=>i.InsName).FirstOrDefault();
+            this.insName = DB.Instructors.Where(i => i.InsEmail == insEmail).Select(i => i.InsName).FirstOrDefault();
         }
         private void icon_close_Click(object sender, EventArgs e)
         {
