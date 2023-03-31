@@ -12,7 +12,7 @@ Steps to setup the application:
 - Restore the NuGet packages used in the solution(EF Core packages).
 - Open SQL Server Management Studio and create a new database named 'ExamsDB'.
 - Restore the database backup file.
-- Update the connection string in the App.config file to point to your SQL Server instance and the 'ExamsDB' database.
+- Update the connection string in the App.config file to point to your SQL Server instance and the 'ExamDB' database.
 
 ## Steps to use the application:
 
