@@ -17,6 +17,6 @@ Steps to setup the application:
 ## Steps to use the application:
 
  - Launch the application in Visual Studio.
- - Select the appropriate user role (Admin, Teacher, or Student) to access the application features.
- - Admins can add or remove teachers and students, while teachers can create and grade exams for their students. Students can view their exam scores.
+ - Select the appropriate user role (Admin, Instructor, or Student) to access the application features.
+ - Admins can add or remove Instructors and students, while Instructors can create and grade exams for their students. Students can view their exam scores.
  - Use the various forms and controls to perform actions in the application.
